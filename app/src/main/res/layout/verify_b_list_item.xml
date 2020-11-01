@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layoutDirection="rtl"
+    android:padding="20dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/txtLay">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/firstName"
+        android:text="اسم المستفيد الأول : محمد علي"
+        android:layout_marginBottom="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/familyName"
+        android:text="عائلة المستفيد : محمد علي"
+        android:layout_marginBottom="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone"
+        android:text="هاتف المستفيد : محمد علي"
+        android:layout_marginBottom="10dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"/>
+</LinearLayout>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="تحقق"
+        android:id="@+id/verifyBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/divider"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_background"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"/>
+</RelativeLayout>

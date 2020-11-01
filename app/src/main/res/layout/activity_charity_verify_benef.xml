@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CharityVerifyBenefActivity"
+    android:layoutDirection="rtl">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:background="#a5a5a5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="إحسان"
+            android:textSize="35sp"
+            android:gravity="center"
+            android:paddingRight="10dp"
+            android:textColor="@android:color/black"
+            android:padding="5dp"/>
+
+
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تسجيل مستفيد جديد"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:background="#e4af80"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:id="@+id/firstName"
+            android:text="اسم المستفيد الأول: "
+            android:layout_marginBottom="10dp"
+            android:paddingRight="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:id="@+id/familyName"
+            android:text="عائلة المستفيد: "
+            android:layout_marginBottom="10dp"
+            android:paddingRight="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:id="@+id/phone"
+            android:text="هاتف المستفيد: "
+            android:layout_marginBottom="10dp"
+            android:paddingRight="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:id="@+id/idNumber"
+            android:text="رقم الهوية: "
+            android:layout_marginBottom="10dp"
+            android:paddingRight="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:id="@+id/charity"
+            android:text="جمعية المستفيد: "
+            android:layout_marginBottom="10dp"
+            android:paddingHorizontal="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:id="@+id/homeAddress"
+            android:text="عنوان المنزل: "
+            android:layout_marginBottom="30dp"
+            android:paddingHorizontal="15dp"/>
+
+        <Button
+            android:id="@+id/viewAttachBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/button_background"
+            android:text="عرض المرفقات"
+            android:textSize="20dp"/>
+    </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginHorizontal="15dp">
+            <Button
+                android:id="@+id/approveBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:text="قبول"
+                android:textSize="20dp"/>
+            <Button
+                android:id="@+id/refuseBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="@drawable/button_background"
+                android:text="رفض"
+                android:textSize="20dp"/>
+        </LinearLayout>
+
+
+
+
+</RelativeLayout>
