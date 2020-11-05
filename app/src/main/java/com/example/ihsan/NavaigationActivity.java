@@ -38,6 +38,7 @@ public class NavaigationActivity extends AppCompatActivity  {
         //Navigation coding start
         drawerLayout = findViewById(R.id.drawer_layout);
         actionBarDrawerToggle= new ActionBarDrawerToggle(NavaigationActivity.this,drawerLayout,R.string.drawer_open,R.string.drawer_close);
+        actionBarDrawerToggle.setHomeAsUpIndicator(R.drawable.menu_lines);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         navigationView=findViewById(R.id.navigation_view);
