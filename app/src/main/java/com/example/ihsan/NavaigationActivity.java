@@ -1,6 +1,7 @@
 package com.example.ihsan;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,14 +27,13 @@ public class NavaigationActivity extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navaigation);
-
         miLogout=findViewById(R.id.logout);
-        Toolbar toolbar=findViewById(R.id.toolBar);
+
+
+        Toolbar toolbar=findViewById(R.id.b_toolbar);
         setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-
 
         //Navigation coding start
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -54,6 +54,7 @@ public class NavaigationActivity extends AppCompatActivity  {
 
 
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

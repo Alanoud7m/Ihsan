@@ -7,8 +7,8 @@
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1B7A6E6E"
     tools:context=".NavaigationActivity">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,39 +16,25 @@
 
 
         <androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="#B2615757">
+            android:id="@+id/b_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#B2615757"
+            app:title=".">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:src="@drawable/gp_logo">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_centerInParent="true">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/gp_logo"
-                        />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="110dp"
-                    android:layout_height="34dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginEnd="-17dp"
-                    android:layout_marginBottom="13dp"
-                    app:srcCompat="@drawable/shopping_cart" />
-            </RelativeLayout>
-            ></androidx.appcompat.widget.Toolbar>
-
+            </ImageView>
+        </androidx.appcompat.widget.Toolbar>
 
         <ImageView
             android:id="@+id/imageView"
@@ -57,9 +43,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="87dp"
-            android:layout_marginTop="163dp"
-            android:layout_marginEnd="81dp"
+            android:layout_marginStart="83dp"
+            android:layout_marginTop="211dp"
+            android:layout_marginEnd="85dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/gp_logo" />
@@ -68,13 +54,14 @@
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="167dp"
-            android:layout_marginTop="112dp"
-            android:layout_marginEnd="167dp"
-            android:layout_marginBottom="384dp"
+            android:layout_marginStart="163dp"
+            android:layout_marginTop="336dp"
+            android:layout_marginEnd="171dp"
+            android:layout_marginBottom="345dp"
             android:text="مرحبًا بك ! "
             android:textColor="#000000"
             android:textSize="36sp"
@@ -84,14 +71,16 @@
 
         <Button
             android:id="@+id/viewItem"
-            android:layout_width="212dp"
-            android:layout_height="68dp"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="140dp"
-            android:layout_marginEnd="128dp"
-            android:layout_marginBottom="253dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="659dp"
+            android:layout_marginEnd="158dp"
+            android:layout_marginBottom="221dp"
             android:background="@drawable/button_background"
             android:text="عرض القطع "
             android:textSize="24sp"
@@ -102,8 +91,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.805" />
 
-    </RelativeLayout
-    >
+    </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
@@ -112,7 +100,6 @@
         android:textSize="33pt"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
