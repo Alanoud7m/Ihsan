@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,30 +55,59 @@ public class CharityAddItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charity_add_item);
 
-        itemCount=(EditText)findViewById(R.id.itemCount);
-        itemDesc=(EditText)findViewById(R.id.itemDesc);
-        itemChName=(EditText)findViewById(R.id.itemChName);
-        itemType=(Spinner)findViewById(R.id.itemType);
-        itemGender=(Spinner)findViewById(R.id.itemGender);
-        itemColor=(Spinner)findViewById(R.id.itemColor);
-        itemSize=(Spinner)findViewById(R.id.itemSize);
+        itemCount = (EditText) findViewById(R.id.itemCount);
+        itemDesc = (EditText) findViewById(R.id.itemDesc);
+        itemChName = (EditText) findViewById(R.id.itemChName);
+        itemType = (Spinner) findViewById(R.id.itemType);
+        itemGender = (Spinner) findViewById(R.id.itemGender);
+        itemColor = (Spinner) findViewById(R.id.itemColor);
+        itemSize = (Spinner) findViewById(R.id.itemSize);
 
-        final String[] types =new String[]{"حقائب","احذية","معاطف","تنانير","بناطيل","بلايز","فساتين","ثياب رجالية","اخرى"};
-
-        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,types);
+        final String[] types = new String[]{"حقائب", "احذية", "معاطف", "تنانير", "بناطيل", "بلايز", "فساتين", "ثياب رجالية", "اخرى"};
+        ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, types);
         itemType.setAdapter(typeAdapter);
 
-        final String[] genders =new String[]{"رجالي","نسائي","اطفال"};
-        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,genders);
+        final String[] genders = new String[]{"رجالي", "نسائي", "اطفال"};
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, genders);
         itemGender.setAdapter(genderAdapter);
 
-        final String[] colors =new String[]{"أزرق","أخضر","أحمر","أصفر","أسود","رمادي","بنفسجي","أخرى"};
-        ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,colors);
+        final String[] colors = new String[]{"أزرق", "أخضر", "أحمر", "أصفر", "أبيض", "أسود", "رمادي", "بنفسجي", "أخرى"};
+        ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, colors);
         itemColor.setAdapter(colorAdapter);
 
-        final String[] sizes =new String[]{"XS","S","M","L","XL","2XL","3XL"};
-        ArrayAdapter<String> sizeAdapter = new ArrayAdapter<>(this,R.layout.support_simple_spinner_dropdown_item,sizes);
-        itemSize.setAdapter(sizeAdapter);
+        final String[] sizes = new String[]{"XS", "S", "M", "L", "XL", "2XL", "3XL"};
+        final String[] shose_sizes = new String[]{"١٠-١٢", "١٣-١٤", "١٥-١٦",  "١٧-١٨", "١٩-٢٠", "٢١-٢٢", "٢٣-٢٤", "٢٥-٢٦", "٢٧-٢٨", "٢٩-٣٠", "٣١-٣٢", "٣٣-٣٤", "٣٥-٣٦", "٣٧", "٣٨", "٣٩","٤٠", "٤١","٤٢","٤٣", "٤٤", "اخرى"};
+        final String[] bags = new String[]{ "حقيبة ظهر", "حقيبة يدوية", "حقيبة سفر", "اخرى"};
+        final ArrayAdapter<String> sizeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, sizes);
+        final ArrayAdapter<String> sizeAdapter_sh = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, shose_sizes);
+        final ArrayAdapter<String> bag_size = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, bags);
+
+        itemType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position==0) {
+                    itemSize.setAdapter(bag_size);
+                }
+                if (position==1) {
+                    itemSize.setAdapter(sizeAdapter_sh);
+                }
+                else {
+                    itemSize.setAdapter(sizeAdapter);
+                }
+            }
+
+            public void onNothingSelected() {
+
+            }
+
+
+            public void onNothingSelected(AdapterView<?> arg0) {// do nothing
+            }
+
+        });
+
+
+
 
         Button cancelBtn = (Button)findViewById(R.id.cancelBtn);
         cancelBtn.setOnClickListener(new View.OnClickListener() {
