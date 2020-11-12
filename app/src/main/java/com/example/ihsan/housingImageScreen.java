@@ -51,7 +51,7 @@ public class housingImageScreen extends AppCompatActivity {
                 viewHousingRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.with(getApplicationContext()).load(uri).into(housingImage);
+                        Picasso.get().load(uri).into(housingImage);
                     }
                 });
 

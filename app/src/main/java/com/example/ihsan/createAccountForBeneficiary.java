@@ -86,7 +86,7 @@ public class createAccountForBeneficiary extends AppCompatActivity {
         viewHousingRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(getApplicationContext()).load(uri).into(housingImage);
+                Picasso.get().load(uri).into(housingImage);
             }
         });
 
@@ -94,7 +94,7 @@ public class createAccountForBeneficiary extends AppCompatActivity {
         viewIncomeRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                Picasso.with(getApplicationContext()).load(uri).into(incomeImage);
+                Picasso.get().load(uri).into(incomeImage);
             }
         });
 
