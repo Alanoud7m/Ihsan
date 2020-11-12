@@ -8,42 +8,46 @@
     tools:context=".CharityAddItemActivity"
     android:orientation="vertical"
     android:layoutDirection="rtl">
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/b_toolbar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#a5a5a5">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#B2615757"
+        app:title=".">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="إحسان"
-            android:textSize="35sp"
-            android:gravity="center"
-            android:textColor="@android:color/black"/>
+        <ImageView
+            android:layout_width="192pt"
+            android:layout_height="36dp"
+            android:src="@drawable/gp_logo">
 
-
-    </LinearLayout>
+        </ImageView>
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
         android:id="@+id/titleTxt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="إضافة قطعة جديدة"
-        android:textSize="25sp"
+        android:layout_height="25pt"
+        android:text="تفاصيل القطعة"
+        android:textSize="20sp"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:background="#e4af80"
-        android:padding="10dp"/>
+        android:padding="5dp"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_margin="10dp">
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="20dp"
+            android:layout_margin="20dp">
 
 
 
@@ -68,7 +72,50 @@
 <!--            android:id="@+id/itemNumber"-->
 <!--            android:inputType="number"/>-->
 <!--    </LinearLayout>-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:id="@+id/Li"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+>
+            <ImageView
+                android:layout_width="130pt"
+                android:layout_height="120pt"
+                android:layout_gravity="center"
+                android:id="@+id/Imgl"
+/>
+        </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/ImgLin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="الصورة:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+
+
+                <Button
+                    android:id="@+id/addImgBtn"
+                    android:layout_width="60pt"
+                    android:layout_height="22pt"
+                    android:layout_marginRight="80dp"
+                    android:background="@drawable/button_background"
+                    android:gravity="center"
+                    android:text="إضافة صورة"
+                    android:textSize="20dp" />
+]
+
+            </LinearLayout>
+
+    <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -78,15 +125,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="عدد القطع:"
-                    android:textSize="25sp"
+                    android:textSize="18sp"
                     android:gravity="center"
                     android:textColor="@android:color/black"
                     android:layout_marginLeft="10dp"/>
-                <EditText
-                    android:layout_width="match_parent"
+                <Spinner
+                    android:layout_width="50pt"
                     android:layout_height="match_parent"
-                    android:id="@+id/itemCount"
-                    android:inputType="number"/>
+                    android:id="@+id/itemCount"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:id="@+id/titemCount"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="10dp"/>
+
             </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,10 +153,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="وصف القطعة:"
-            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:textColor="@android:color/black"
-            android:layout_marginLeft="10dp"/>
+            android:textSize="18sp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -118,10 +173,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="اسم الجمعية:"
-            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
             android:gravity="center"
             android:textColor="@android:color/black"
-            android:layout_marginLeft="10dp"/>
+            android:textSize="18sp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -137,15 +192,23 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
             android:text="النوع:"
-            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+        <Spinner
+            android:layout_width="73pt"
+            android:layout_height="match_parent"
+            android:id="@+id/itemType"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:id="@+id/titemType"
             android:gravity="center"
             android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/itemType"/>
     </LinearLayout>
 
     <LinearLayout
@@ -158,14 +221,23 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="الصنف:"
-            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+        <Spinner
+            android:layout_width="70pt"
+            android:layout_height="match_parent"
+            android:id="@+id/itemGender"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:id="@+id/titemGender"
             android:gravity="center"
             android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/itemGender"/>
+
     </LinearLayout>
 
     <LinearLayout
@@ -178,14 +250,22 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="اللون:"
-            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+        <Spinner
+            android:layout_width="73pt"
+            android:layout_height="match_parent"
+            android:id="@+id/itemColor"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:id="@+id/titemColor"
             android:gravity="center"
             android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/itemColor"/>
     </LinearLayout>
 
 
@@ -200,67 +280,60 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="المقاس:"
-            android:textSize="25sp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"/>
+        <Spinner
+            android:layout_width="70pt"
+            android:layout_height="match_parent"
+            android:id="@+id/itemSize"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:id="@+id/titemSize"
             android:gravity="center"
             android:textColor="@android:color/black"
             android:layout_marginLeft="10dp"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/itemSize"/>
     </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="الصورة:"
-                    android:textSize="25sp"
-                    android:gravity="center"
-                    android:textColor="@android:color/black"
-                    android:layout_marginLeft="10dp"/>
-                <Button
-                    android:id="@+id/addImgBtn"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/button_background"
-                    android:text="إضافة صورة"
-                    android:textSize="25dp"
-                    />
-            </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50pt"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:layout_marginEnd="30dp">
 
         <Button
             android:id="@+id/addItemBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
+            android:layout_width="55pt"
+            android:layout_height="24pt"
+            android:layout_margin="20dp"
             android:background="@drawable/button_background"
             android:text="إضافة قطعة"
-            android:textSize="25dp"/>
+            android:textSize="18dp" />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/add_to_shooping"
+            android:layout_width="78dp"
+            android:layout_height="22pt"
+            android:background="@drawable/button_background"
+            android:gravity="center"
+            android:layout_margin="30dp"
+            android:src="@drawable/shopping_cart" />
         <Button
             android:id="@+id/cancelBtn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
+            android:layout_width="50pt"
+            android:layout_height="22pt"
+            android:layout_margin="20dp"
             android:background="@drawable/button_background"
             android:text="الغاء"
-            android:textSize="25dp"/>
+            android:textSize="18dp" />
     </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

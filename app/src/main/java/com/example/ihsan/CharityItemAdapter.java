@@ -7,22 +7,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class CharityItemAdapter extends RecyclerView.Adapter<CharityItemAdapter.CharityItemViewHolder>{
+public class CharityItemAdapter extends RecyclerView.Adapter<CharityItemAdapter.CharityItemViewHolder> {
     private Context mContext;
     private ArrayList<CharityItem> charityItems = new ArrayList<>();
     OnDeleteButtonItemClickListener deleteButtonListener;
     OnUpdateButtonItemClickListener updateButtonListener;
+
+
     public interface OnDeleteButtonItemClickListener {
         void onDeleteIsClick(View button, int position);
     }
@@ -49,10 +48,11 @@ public class CharityItemAdapter extends RecyclerView.Adapter<CharityItemAdapter.
         return charityItemViewHolder;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull CharityItemViewHolder holder, final int position) {
     holder.charityItemTxt.setText(charityItems.get(position).description);
-        Picasso.with(mContext).load(charityItems.get(position).image).into(holder.charityItemImg);
+        Picasso.get().load(charityItems.get(position).getImage()).into(holder.charityItemImg);
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +65,7 @@ public class CharityItemAdapter extends RecyclerView.Adapter<CharityItemAdapter.
                 updateButtonListener.onUpdateIsClick(view,position);
             }
         });
+
     }
 
     @Override
@@ -84,4 +85,8 @@ public class CharityItemAdapter extends RecyclerView.Adapter<CharityItemAdapter.
             updateBtn = (Button)itemView.findViewById(R.id.updateBtn);
         }
     }
+
+
+
+
 }

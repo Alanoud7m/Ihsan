@@ -55,7 +55,7 @@ SearchView searchView;
             public boolean onQueryTextChange(String s) {
                 if(!s.isEmpty())
                 {filteredList.clear();
-                    
+
                     for(CharityItem ch :charityItems)
                     {
                         if(ch.description.contains(s))
@@ -129,6 +129,7 @@ SearchView searchView;
                     public void onUpdateIsClick(View button, int position) {
                         Intent intent = new Intent(getBaseContext(),CharityAddItemActivity.class);
                         intent.putExtra("itemID",charityItems.get(position).id);
+                        intent.setAction("edit");
                         startActivity(intent);
                     }
                 });

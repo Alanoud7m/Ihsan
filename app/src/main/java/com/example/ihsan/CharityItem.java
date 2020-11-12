@@ -2,7 +2,17 @@ package com.example.ihsan;
 
 public class CharityItem {
 
-    String id,count, number,description,name,charity,type,gender,color,size,image;
+    String id;
+    String count;
+    String number;
+    String description;
+    String name;
+    String charity;
+    String type;
+    String gender;
+    String color;
+    String size;
+    private String image;
 
     public CharityItem() {
     }
@@ -18,7 +28,7 @@ public class CharityItem {
         this.gender = gender;
         this.color = color;
         this.size = size;
-        this.image = image;
+        this.setImage(image);
     }
 
     public String getId() {

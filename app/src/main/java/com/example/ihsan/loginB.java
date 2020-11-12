@@ -75,7 +75,7 @@ public class loginB extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             Toast.makeText(loginB.this, "تم تسجيل الدخول بنجاح.", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(loginB.this, NavaigationActivity.class));
+                            startActivity(new Intent(loginB.this,b_main.class));
                         } else {
                             Toast.makeText(loginB.this, "حصل خطأ! اسم المستخدم أو كلمة المرور خاطئة"/* + task.getException().getMessage()*/, Toast.LENGTH_SHORT).show();
                         }

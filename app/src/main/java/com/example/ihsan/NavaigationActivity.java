@@ -1,34 +1,55 @@
 package com.example.ihsan;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
-
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+
+import javax.annotation.Nullable;
 
 public class NavaigationActivity extends AppCompatActivity  {
     MenuItem miLogout;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
+    SearchView searchView;
+
+    //for homepage
+    ArrayList<CharityItem> charityItems ,filteredList;
+    RecyclerView recyclerView;
+    CharityItemAdapter charityItemAdapter;
+    FirebaseFirestore fireStore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navaigation);
         miLogout=findViewById(R.id.logout);
-
 
         Toolbar toolbar=findViewById(R.id.b_toolbar);
         setSupportActionBar(toolbar);
@@ -52,7 +73,69 @@ public class NavaigationActivity extends AppCompatActivity  {
             }
         });
 
+        //for homepage
+        Button viewAll = findViewById(R.id.view_all);
+        viewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(), b_view_items.class));
+            }
+        });
+recyclerView=findViewById(R.id.recycler_item);
+        charityItems =new ArrayList<CharityItem>();
+        filteredList =new ArrayList<CharityItem>();
+        getItems();
+        searchView =(SearchView)findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if(!s.isEmpty())
+                {filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.description.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                    charityItemAdapter.notifyDataSetChanged();
+                }else
+                {
+                    filteredList.clear();
+                    getItems();
+                }
+
+
+                return false;
+            }
+        });
+    }
+
+    void getItems()
+    {
+        fireStore = FirebaseFirestore.getInstance();
+        fireStore.collection("CharityItems").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                charityItems.clear();
+                filteredList.clear();
+                for(DocumentSnapshot snapshot :queryDocumentSnapshots)
+                {   CharityItem ch1=snapshot.toObject(CharityItem.class);
+                    ch1.id=snapshot.getId();
+                    charityItems.add(ch1);
+                }
+                filteredList.addAll(charityItems) ;
+                charityItemAdapter = new CharityItemAdapter(getBaseContext(),filteredList);
+                recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(),2));
+                recyclerView.setAdapter(charityItemAdapter);
+            }
+        });
     }
 
 
@@ -118,9 +201,13 @@ public class NavaigationActivity extends AppCompatActivity  {
                 AlertDialog alertDialog1=alertDialogBuilder1.create();
                 alertDialog1.show();
 
-
         }
 
-
     }
+     @Override
+      public boolean onCreateOptionsMenu(Menu menu) {
+         getMenuInflater().inflate(R.menu.shopping_cart,menu);
+      return super.onCreateOptionsMenu(menu);
+      }
+
 }

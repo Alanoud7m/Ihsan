@@ -52,7 +52,7 @@ public class incomeImageScreen extends AppCompatActivity {
                 viewHousingRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
-                        Picasso.with(getApplicationContext()).load(uri).into(incomeImage);
+                        Picasso.get().load(uri).into(incomeImage);
                     }
                 });
 

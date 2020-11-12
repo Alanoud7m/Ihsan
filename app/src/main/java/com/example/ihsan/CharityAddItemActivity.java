@@ -6,14 +6,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +34,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
-import java.net.URI;
-import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,8 +43,11 @@ import java.util.UUID;
 
 public class CharityAddItemActivity extends AppCompatActivity {
 
-    EditText itemDesc,itemChName,itemCount;
-    Spinner itemGender,itemColor,itemSize,itemType;
+    boolean sh=false;
+    EditText itemDesc,itemChName;
+    TextView  titemCount, titemGender,titemColor,titemSize,titemType;
+    Spinner itemCount, itemGender,itemColor,itemSize,itemType;
+    ImageView Imgl;
     FirebaseFirestore fStore;
     FirebaseStorage storage;
     StorageReference sRef;
@@ -50,18 +57,52 @@ public class CharityAddItemActivity extends AppCompatActivity {
     CharityItem ch;
     String itemId;
     int counter;
+    Button x ,xx;
+
+    LinearLayout addImg , img ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_charity_add_item);
 
-        itemCount = (EditText) findViewById(R.id.itemCount);
+        itemCount = (Spinner) findViewById(R.id.itemCount);
         itemDesc = (EditText) findViewById(R.id.itemDesc);
         itemChName = (EditText) findViewById(R.id.itemChName);
         itemType = (Spinner) findViewById(R.id.itemType);
         itemGender = (Spinner) findViewById(R.id.itemGender);
         itemColor = (Spinner) findViewById(R.id.itemColor);
         itemSize = (Spinner) findViewById(R.id.itemSize);
+
+        Imgl=(ImageView) findViewById(R.id.Imgl);
+        LinearLayout ImgLin=(LinearLayout) findViewById(R.id.ImgLin);
+        ImageButton add_to_shooping =(ImageButton) findViewById(R.id.add_to_shooping);
+        Button x =(Button) findViewById(R.id.cancelBtn);
+        Button xx =(Button) findViewById(R.id.addItemBtn);
+        itemCount.setVisibility(View.VISIBLE);
+        itemGender.setVisibility(View.VISIBLE);
+        itemColor.setVisibility(View.VISIBLE);
+        itemSize.setVisibility(View.VISIBLE);
+        itemType.setVisibility(View.VISIBLE);
+        Imgl.setVisibility(View.GONE);
+        ImgLin.setVisibility(View.VISIBLE);
+        add_to_shooping.setVisibility(View.GONE);
+        x.setVisibility(View.VISIBLE);
+        xx.setVisibility(View.VISIBLE);
+        itemDesc.setEnabled(true);
+        itemChName.setEnabled(true);
+
+
+        titemCount = (TextView) findViewById(R.id.itemDesc);
+        titemGender = (TextView) findViewById(R.id.titemGender);
+        titemColor = (TextView) findViewById(R.id.titemColor);
+        titemSize = (TextView) findViewById(R.id.titemSize);
+        titemType = (TextView) findViewById(R.id.titemType);
+
+
+
+        final String[] counts = new String[]{"١", "٢", "٣", "٤", "٥", "٦", "٧", "٨","٩", "١٠"};
+        ArrayAdapter<String> countAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, counts);
+        itemCount.setAdapter(countAdapter);
 
         final String[] types = new String[]{"حقائب", "احذية", "معاطف", "تنانير", "بناطيل", "بلايز", "فساتين", "ثياب رجالية", "اخرى"};
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, types);
@@ -75,38 +116,46 @@ public class CharityAddItemActivity extends AppCompatActivity {
         ArrayAdapter<String> colorAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, colors);
         itemColor.setAdapter(colorAdapter);
 
-        final String[] sizes = new String[]{"XS", "S", "M", "L", "XL", "2XL", "3XL"};
+        final String[] sizes = new String[]{"XS", "S", "M", "L", "XL", "2XL", "3XL","اخرى"};
+        final String[] ch_sizes = new String[]{"مواليد", "٦ اشهر", "٩ اشهر","١٢ شهر","٢","٤","٦", "٨","١٠","١٢","١٤", "١٦", "١٨", "٢٠","XS", "S", "M", "اخرى"};
         final String[] shose_sizes = new String[]{"١٠-١٢", "١٣-١٤", "١٥-١٦",  "١٧-١٨", "١٩-٢٠", "٢١-٢٢", "٢٣-٢٤", "٢٥-٢٦", "٢٧-٢٨", "٢٩-٣٠", "٣١-٣٢", "٣٣-٣٤", "٣٥-٣٦", "٣٧", "٣٨", "٣٩","٤٠", "٤١","٤٢","٤٣", "٤٤", "اخرى"};
         final String[] bags = new String[]{ "حقيبة ظهر", "حقيبة يدوية", "حقيبة سفر", "اخرى"};
         final ArrayAdapter<String> sizeAdapter = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, sizes);
         final ArrayAdapter<String> sizeAdapter_sh = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, shose_sizes);
         final ArrayAdapter<String> bag_size = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, bags);
+        final ArrayAdapter<String> ch_size = new ArrayAdapter<>(this, R.layout.support_simple_spinner_dropdown_item, ch_sizes);
 
         itemType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                if (position==0) {
+                if (position<1) {
                     itemSize.setAdapter(bag_size);
                 }
-                if (position==1) {
+                else if (position==1) {
                     itemSize.setAdapter(sizeAdapter_sh);
                 }
                 else {
+                    sh=true;
                     itemSize.setAdapter(sizeAdapter);
                 }
             }
-
             public void onNothingSelected() {
-
             }
-
-
             public void onNothingSelected(AdapterView<?> arg0) {// do nothing
             }
-
         });
 
+        itemGender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if (position==2 && sh==true) {
+                    itemSize.setAdapter(ch_size);
+                }
 
+            }
+            public void onNothingSelected() {
+            }
+            public void onNothingSelected(AdapterView<?> arg0) {// do nothing
+            }
+        });
 
 
         Button cancelBtn = (Button)findViewById(R.id.cancelBtn);
@@ -134,7 +183,7 @@ public class CharityAddItemActivity extends AppCompatActivity {
             }
         });
         Button addItemBtn =findViewById(R.id.addItemBtn);
-        Button addImgBtn =findViewById(R.id.addImgBtn);
+        final Button addImgBtn =findViewById(R.id.addImgBtn);
         addImgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,29 +196,46 @@ public class CharityAddItemActivity extends AppCompatActivity {
             }
         });
         Intent intent = getIntent();
-        if(intent.getExtras()!=null)
+        String e = intent.getAction();
+        if(intent.getExtras()!=null && e.equals("edit"))
         {
+            itemCount.setVisibility(View.VISIBLE);
+            itemGender.setVisibility(View.VISIBLE);
+            itemColor.setVisibility(View.VISIBLE);
+            itemSize.setVisibility(View.VISIBLE);
+            itemType.setVisibility(View.VISIBLE);
+            Imgl=(ImageView) findViewById(R.id.Imgl);
+            Imgl.setVisibility(View.GONE);
+            ImgLin.setVisibility(View.VISIBLE);
+            add_to_shooping.setVisibility(View.GONE);
+            x.setVisibility(View.VISIBLE);
+            xx.setVisibility(View.VISIBLE);
+            itemDesc.setEnabled(true);
+            itemChName.setEnabled(true);
             itemId=intent.getExtras().getString("itemID");
-
             TextView titleTxt= (TextView)findViewById(R.id.titleTxt);
             titleTxt.setText("تعديل بيانات القطعة");
             addItemBtn.setText("حفظ التعديلات");
-             ch=new CharityItem();
+            ch=new CharityItem();
             fStore=FirebaseFirestore.getInstance();
             fStore.collection("CharityItems").document(itemId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
                 @Override
                 public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
                     ch= documentSnapshot.toObject(CharityItem.class);
 
-                    itemCount.setText(ch.count);
+                    itemCount.setSelection(Arrays.asList(counts).indexOf(ch.count));
                     itemDesc.setText(ch.description);
                     itemChName.setText(ch.charity);
                     itemType.setSelection(Arrays.asList(types).indexOf(ch.type));
                     itemGender.setSelection(Arrays.asList(genders).indexOf(ch.gender));
                     itemColor.setSelection(Arrays.asList(colors).indexOf(ch.color));
                     itemSize.setSelection(Arrays.asList(sizes).indexOf(ch.size));
+                    Picasso.get().load(ch.getImage()).into(Imgl);
+
                 }
             });
+
+
             addItemBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -186,16 +252,14 @@ public class CharityAddItemActivity extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Uri uri) {
 
-
-
-                                                ch.count=itemCount.getText().toString();
+                                                ch.count=itemCount.getSelectedItem().toString();
                                                 ch.description=itemDesc.getText().toString();
                                                 ch.charity=itemChName.getText().toString();
                                                 ch.type=itemType.getSelectedItem().toString();
                                                 ch.gender=itemGender.getSelectedItem().toString();
                                                 ch.color=itemColor.getSelectedItem().toString();
                                                 ch.size=itemSize.getSelectedItem().toString();
-                                                ch.image=uri.toString();
+                                                ch.setImage(uri.toString());
                                                 fStore=FirebaseFirestore.getInstance();
                                                 fStore.collection("CharityItems").document(itemId).set(ch).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
@@ -211,7 +275,7 @@ public class CharityAddItemActivity extends AppCompatActivity {
                     }else
                     {
 
-                        ch.count=itemCount.getText().toString();
+                        ch.count=itemCount.getSelectedItem().toString();
                         ch.description=itemDesc.getText().toString();
                         ch.charity=itemChName.getText().toString();
                         ch.type=itemType.getSelectedItem().toString();
@@ -231,6 +295,50 @@ public class CharityAddItemActivity extends AppCompatActivity {
 
                 }
             });
+        }        else if(intent.getExtras()!=null && e.equals("v")) {
+
+
+            itemId = intent.getExtras().getString("itemID");
+            TextView titleTxt = (TextView) findViewById(R.id.titleTxt);
+            titleTxt.setText("عرض تفاصيل القطعة");
+
+            Imgl=(ImageView) findViewById(R.id.Imgl);
+            Imgl.setVisibility(View.VISIBLE);
+            ImgLin.setVisibility(View.GONE);
+            add_to_shooping.setVisibility(View.VISIBLE);
+            x.setVisibility(View.GONE);
+            xx.setVisibility(View.GONE);
+
+            itemCount.setVisibility(View.GONE);
+            itemGender.setVisibility(View.GONE);
+            itemColor.setVisibility(View.GONE);
+            itemSize.setVisibility(View.GONE);
+            itemType.setVisibility(View.GONE);
+
+            itemDesc.setEnabled(false);
+            itemChName.setEnabled(false);;
+
+            ch = new CharityItem();
+            fStore = FirebaseFirestore.getInstance();
+            fStore.collection("CharityItems").document(itemId).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                    ch = documentSnapshot.toObject(CharityItem.class);
+
+                    titemCount.setText(ch.getCount());
+                    titemGender.setText(ch.getGender());
+                    titemColor.setText(ch.getColor());
+                    titemSize.setText(ch.getSize());
+                    titemType.setText(ch.getType());
+                    itemDesc.setText(ch.description);
+                    itemChName.setText(ch.charity);
+                    Picasso.get().load(ch.getImage()).into(Imgl);
+
+
+                }
+            });
+
+
         }else
         {
             fAuth=FirebaseAuth.getInstance();
@@ -257,7 +365,7 @@ public class CharityAddItemActivity extends AppCompatActivity {
                     String randomKey = UUID.randomUUID().toString();
                     storage=FirebaseStorage.getInstance();
                     sRef =storage.getReference().child("CharityItems/"+randomKey);
-                    if(itemCount.getText().toString().isEmpty()||itemDesc.getText().toString().isEmpty()||itemChName.getText().toString().isEmpty())
+                    if(itemCount.getSelectedItem().toString().isEmpty()||itemDesc.getText().toString().isEmpty()||itemChName.getText().toString().isEmpty())
                     {
                         Toast.makeText(getBaseContext(),"الرجاء ملء جميع الحقول",Toast.LENGTH_LONG).show();
                         return;
@@ -282,14 +390,14 @@ public class CharityAddItemActivity extends AppCompatActivity {
 
                                                     CharityItem charityItem = new CharityItem();
                                                     charityItem.number=String.valueOf(counter);
-                                                    charityItem.count=itemCount.getText().toString();
+                                                    charityItem.count=itemCount.getSelectedItem().toString();
                                                     charityItem.description=itemDesc.getText().toString();
                                                     charityItem.charity=itemChName.getText().toString();
                                                     charityItem.type=itemType.getSelectedItem().toString();
                                                     charityItem.gender=itemGender.getSelectedItem().toString();
                                                     charityItem.color=itemColor.getSelectedItem().toString();
                                                     charityItem.size=itemSize.getSelectedItem().toString();
-                                                    charityItem.image=uri.toString();
+                                                    charityItem.setImage(uri.toString());
                                                     fStore=FirebaseFirestore.getInstance();
                                                     fStore.collection("CharityItems").add(charityItem).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                                         @Override
@@ -320,10 +428,8 @@ public class CharityAddItemActivity extends AppCompatActivity {
 
         }
 
-
-
-
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
