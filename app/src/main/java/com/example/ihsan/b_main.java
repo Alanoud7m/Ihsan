@@ -60,71 +60,71 @@ public class b_main extends AppCompatActivity {
             }
         });
     }
-        @Override
-        public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-            if(actionBarDrawerToggle.onOptionsItemSelected(item)){
-                return true;
-            }
-            return super.onOptionsItemSelected(item);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(actionBarDrawerToggle.onOptionsItemSelected(item)){
+            return true;
         }
-
-        public void UserMenuSelected(MenuItem menuItem){
-            switch (menuItem.getItemId()) {
-                case  R.id.address:
-                    break;
-
-                case  R.id.account:
-                    startActivity(new Intent(b_main.this, b_ViewAccount.class));
-
-                    break;
-
-                case  R.id.order:
-                    break;
-
-                case  R.id.call:
-                    AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
-                    alertDialogBuilder.setTitle("تواصل معنا ... ");
-                    alertDialogBuilder.setMessage("ihsangpksu@gmail.com");
-                    // alertDialogBuilder.setCancelable(false);
-
-
-                    alertDialogBuilder.setNegativeButton("أغلاق", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(b_main.this,"إلغاء الأمر",Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-                    AlertDialog alertDialog=alertDialogBuilder.create();
-                    alertDialog.show();;
-                    break;
-
-                case  R.id.logout:
-                    AlertDialog.Builder alertDialogBuilder1=new AlertDialog.Builder(this);
-                    alertDialogBuilder1.setTitle("رسالة !");
-                    alertDialogBuilder1.setMessage("هل أنت متأكد أنك تريد تسجيل الخروج ؟");
-                    alertDialogBuilder1.setCancelable(false);
-
-                    alertDialogBuilder1.setPositiveButton("نعم", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            finish();
-                        }
-                    });
-
-                    alertDialogBuilder1.setNegativeButton("لا", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(b_main.this,"إلغاء الأمر",Toast.LENGTH_LONG).show();
-                        }
-                    });
-
-                    AlertDialog alertDialog1=alertDialogBuilder1.create();
-                    alertDialog1.show();
-
-
-            }
-
-
-        }
+        return super.onOptionsItemSelected(item);
     }
+
+    public void UserMenuSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()) {
+            case  R.id.address:
+                break;
+
+            case  R.id.account:
+                startActivity(new Intent(b_main.this, b_ViewAccount.class));
+
+                break;
+
+            case  R.id.order:
+                break;
+
+            case  R.id.call:
+                AlertDialog.Builder alertDialogBuilder=new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle("تواصل معنا ... ");
+                alertDialogBuilder.setMessage("ihsangpksu@gmail.com");
+                // alertDialogBuilder.setCancelable(false);
+
+
+                alertDialogBuilder.setNegativeButton("أغلاق", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(b_main.this,"إلغاء الأمر",Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog alertDialog=alertDialogBuilder.create();
+                alertDialog.show();;
+                break;
+
+            case  R.id.logout:
+                AlertDialog.Builder alertDialogBuilder1=new AlertDialog.Builder(this);
+                alertDialogBuilder1.setTitle("رسالة !");
+                alertDialogBuilder1.setMessage("هل أنت متأكد أنك تريد تسجيل الخروج ؟");
+                alertDialogBuilder1.setCancelable(false);
+
+                alertDialogBuilder1.setPositiveButton("نعم", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                });
+
+                alertDialogBuilder1.setNegativeButton("لا", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(b_main.this,"إلغاء الأمر",Toast.LENGTH_LONG).show();
+                    }
+                });
+
+                AlertDialog alertDialog1=alertDialogBuilder1.create();
+                alertDialog1.show();
+
+
+        }
+
+
+    }
+}
