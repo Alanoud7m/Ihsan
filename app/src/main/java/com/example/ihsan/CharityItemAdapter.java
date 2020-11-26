@@ -37,7 +37,6 @@ public class CharityItemAdapter extends RecyclerView.Adapter<CharityItemAdapter.
     public CharityItemAdapter(Context mContext, ArrayList<CharityItem> charityItems) {
         this.mContext = mContext;
         this.charityItems = charityItems;
-
     }
 
     @NonNull
@@ -85,7 +84,6 @@ public class CharityItemAdapter extends RecyclerView.Adapter<CharityItemAdapter.
             updateBtn = (Button)itemView.findViewById(R.id.updateBtn);
         }
     }
-
 
 
 

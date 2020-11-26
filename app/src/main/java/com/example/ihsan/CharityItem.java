@@ -6,7 +6,6 @@ public class CharityItem {
     String count;
     String number;
     String description;
-    String name;
     String charity;
     String type;
     String gender;
@@ -17,18 +16,18 @@ public class CharityItem {
     public CharityItem() {
     }
 
-    public CharityItem(String id, String count, String number, String description, String name, String charity, String type, String gender, String color, String size, String image) {
+    public CharityItem(String id, String count, String number, String description,  String charity, String type, String gender, String color, String size, String image) {
         this.id = id;
         this.count = count;
         this.number = number;
         this.description = description;
-        this.name = name;
         this.charity = charity;
         this.type = type;
         this.gender = gender;
         this.color = color;
         this.size = size;
         this.setImage(image);
+
     }
 
     public String getId() {
@@ -63,13 +62,6 @@ public class CharityItem {
         this.description = description;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getCharity() {
         return charity;
@@ -118,4 +110,5 @@ public class CharityItem {
     public void setImage(String image) {
         this.image = image;
     }
+
 }

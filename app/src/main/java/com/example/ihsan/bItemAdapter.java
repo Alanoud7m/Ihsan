@@ -76,7 +76,5 @@ public class bItemAdapter extends RecyclerView.Adapter<bItemAdapter.bItemViewHol
             }
 
 
-    public class OnViewButtonItemClickListener {
-    }
 }
 

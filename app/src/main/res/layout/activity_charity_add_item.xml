@@ -10,18 +10,22 @@
     android:layoutDirection="rtl">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/b_toolbar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
         android:background="#B2615757"
-        app:title=".">
+        app:title=" ">
 
         <ImageView
-            android:layout_width="192pt"
+            android:layout_width="wrap_content"
             android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_margin="2pt"
             android:src="@drawable/gp_logo">
 
         </ImageView>
@@ -316,14 +320,7 @@
             android:background="@drawable/button_background"
             android:text="إضافة قطعة"
             android:textSize="18dp" />
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/add_to_shooping"
-            android:layout_width="78dp"
-            android:layout_height="22pt"
-            android:background="@drawable/button_background"
-            android:gravity="center"
-            android:layout_margin="30dp"
-            android:src="@drawable/shopping_cart" />
+
         <Button
             android:id="@+id/cancelBtn"
             android:layout_width="50pt"

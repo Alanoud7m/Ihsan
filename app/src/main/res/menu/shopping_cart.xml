@@ -7,7 +7,7 @@
         android:textSize="33pt"
         android:orderInCategory="101"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/shopping_cart"
+        android:icon="@drawable/sh_cart"
         android:title="سلة التسوق" />
 
 </menu>

@@ -3,9 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/address"
         android:textSize="33pt"
+        android:orderInCategory="101"
         android:icon="@drawable/ic_baseline_home_24"
         android:iconTint="#FFFFFF"
         android:title="@string/home" />
@@ -13,23 +15,27 @@
     <item
         android:id="@+id/account"
         android:textSize="24sp"
+        android:orderInCategory="101"
         android:icon="@drawable/ic_baseline_account_box_24"
         android:title="@string/account" />
 
     <item
         android:id="@+id/order"
         android:textSize="24sp"
+        android:orderInCategory="101"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
         android:title="@string/order" />
 
     <item
         android:id="@+id/call"
         android:textSize="24sp"
+        android:orderInCategory="101"
         android:icon="@drawable/ic_baseline_call_24"
         android:title= "تواصل معنا" />
     <item
         android:id="@+id/logout"
         android:textSize="24sp"
+        android:orderInCategory="101"
         android:icon="@android:drawable/ic_lock_power_off"
         android:title="@string/logout" />
 

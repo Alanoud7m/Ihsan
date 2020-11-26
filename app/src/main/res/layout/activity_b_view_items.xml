@@ -1,51 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".b_view_items">
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layoutDirection="rtl"
-    tools:context=".b_view_items">
+>
 
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/bb_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#B2615757"
+        app:title=" "
+>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/b_toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginTop="0dp"
-                android:background="#B2615757"
-                app:title=".">
-
-                <ImageView
-                    android:layout_width="192pt"
-                    android:layout_height="36dp"
-                    android:src="@drawable/gp_logo">
-
-                </ImageView>
-            </androidx.appcompat.widget.Toolbar>
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_margin="2pt"
+            android:src="@drawable/gp_logo">
+        </ImageView>
+        <ImageButton
+            android:id="@+id/shoppingcart"
+            android:layout_width="14pt"
+            android:layout_height="13pt"
+            android:layout_gravity="right"
+            android:layout_marginRight="3pt"
+            android:background="@drawable/sh_cart">
+        </ImageButton>
+    </androidx.appcompat.widget.Toolbar>
 
 
     <TextView
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="القطع المضافة"
-        android:textSize="25sp"
+        android:textSize="23sp"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:background="#e4af80"
         android:padding="10dp"/>
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycler_tow"/>
+</androidx.core.widget.NestedScrollView>
 </LinearLayout>
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        app:menu="@menu/naviagation_b"
+        android:layout_gravity="start"
+        android:textSize="33pt"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
