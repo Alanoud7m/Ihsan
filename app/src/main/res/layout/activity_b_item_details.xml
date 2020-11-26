@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CharityAddItemActivity"
+    android:orientation="vertical"
+    android:layoutDirection="rtl">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/b_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="#B2615757"
+        app:title=" ">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:layout_margin="2pt"
+            android:src="@drawable/gp_logo">
+
+        </ImageView>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="match_parent"
+        android:layout_height="25pt"
+        android:text="تفاصيل القطعة"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="#e4af80"
+        android:padding="5dp"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="0dp"
+            android:padding="8pt"
+            android:layout_marginEnd="20dp"
+            android:layout_margin="20dp">
+
+
+
+
+            <!--    <LinearLayout-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:orientation="horizontal"-->
+            <!--        android:layout_margin="10dp">-->
+
+            <!--        <TextView-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:text="رقم القطعة:"-->
+            <!--            android:textSize="25sp"-->
+            <!--            android:gravity="center"-->
+            <!--            android:textColor="@android:color/black"-->
+            <!--            android:layout_marginLeft="10dp"/>-->
+            <!--        <EditText-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:id="@+id/itemNumber"-->
+            <!--            android:inputType="number"/>-->
+            <!--    </LinearLayout>-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/Li"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                >
+                <ImageView
+                    android:layout_width="150pt"
+                    android:layout_height="100pt"
+                    android:layout_gravity="center"
+                    android:id="@+id/Imgl"
+                    />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="عدد القطع المتوفرة:"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemCount"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="وصف القطعة:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemDesc"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="اسم الجمعية:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemChName"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="النوع:"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemType"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="الصنف:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemGender"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="اللون:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemColor"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="المقاس:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemSize"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50pt"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="الكمية :"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+                <Spinner
+                    android:layout_width="40pt"
+                    android:layout_height="match_parent"
+                    android:id="@+id/needCount"/>
+
+                <ImageButton
+                    android:id="@+id/add_to_shooping"
+                    android:layout_width="78dp"
+                    android:layout_height="22pt"
+                    android:background="@drawable/button_background"
+                    android:gravity="center"
+                    android:layout_margin="30dp"
+                    android:src="@drawable/sh_cart" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

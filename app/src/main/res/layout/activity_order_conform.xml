@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:scrollbarTrackVertical="@drawable/button_background"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".order_conform">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/bb_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#B2615757"
+            app:title=" "
+            >
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_margin="2pt"
+                android:src="@drawable/gp_logo">
+            </ImageView>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تأكيد الطلب"
+            android:textSize="23sp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:background="#e4af80"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:layout_marginHorizontal="15pt"
+            android:layout_marginTop="10pt"
+            android:layout_marginBottom="10pt"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:text="عنوان التوصيل"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:gravity="right"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:layout_width="80pt"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/oldAddress"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:checked="true"
+                    android:text="عنوان المنزل المسجل">
+
+                </RadioButton>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/benefAdress"
+                    android:text="عنوان التوصيل"
+                    android:layout_marginHorizontal="20dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="12sp" />
+                <RadioButton
+                    android:layout_width="60pt"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:id="@+id/newAddress"
+                    android:text="عنوان آخر">
+
+
+                </RadioButton>
+            </RadioGroup>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="30pt"
+                android:id="@+id/otherAddress"
+                android:textSize="10sp"
+                android:layout_marginBottom="10pt"
+                android:gravity="right"
+                android:background="@android:color/background_light"
+                android:layout_marginHorizontal="15pt" />
+
+        </LinearLayout>
+
+           <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="تفاصيل الطلبات"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+
+               <androidx.core.widget.NestedScrollView
+                   android:layout_width="match_parent"
+                   android:layout_marginBottom="7pt"
+                   android:layout_height="90pt">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginBottom="90pt"
+                android:id="@+id/recycl"/>
+           </androidx.core.widget.NestedScrollView>
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:orientation="horizontal"
+                   android:gravity="right"
+                   android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="30pt"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3pt"
+            android:gravity="right"
+            android:id="@+id/numOfItemm"
+            android:layout_marginRight="20dp"
+            android:text="عدد القطع"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="3pt"
+                   android:layout_marginRight="40dp"
+                   android:gravity="center"
+                   android:text="عدد القطع:"
+                   android:textColor="@android:color/black"
+                   android:textSize="18sp" />
+               </LinearLayout>
+
+
+        <Button
+            android:id="@+id/place"
+            android:layout_width="55pt"
+            android:layout_height="22pt"
+            android:layout_gravity="center"
+            android:background="@drawable/button_background"
+            android:text="تأكيد الطلب"
+            android:textSize="18dp" />
+    </LinearLayout>
+</LinearLayout>
+
