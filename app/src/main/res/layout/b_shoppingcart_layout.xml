@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_gravity="center"
-    android:layout_height="30pt"
+    android:layout_height="32pt"
     android:layout_weight="1"
     android:layoutDirection="rtl"
     android:layout_marginVertical="3dp"
@@ -16,16 +16,16 @@
 
         <ImageView
             android:id="@+id/charityItemImg"
-            android:layout_width="80dp"
-            android:layout_height="60dp"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:layout_margin="3dp"
+            android:layout_margin="2dp"
             android:layout_marginTop="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/gp_logo" />
 
         <LinearLayout
-            android:layout_width="54pt"
+            android:layout_width="45pt"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
@@ -49,9 +49,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="35pt"
+            android:layout_width="30pt"
             android:layout_height="match_parent"
-            android:layout_margin="5pt"
+            android:layout_margin="3pt"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -73,22 +73,41 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="32pt"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="3pt"
+            android:layout_marginVertical="5pt"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="المقاس"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ssize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/deleteBtn"
+            android:layout_width="12pt"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            android:layout_marginRight="15dp"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/deleteBtn"
-                android:layout_width="12pt"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="#FFFFFF"
-                android:scaleType="fitCenter"
-                android:src="@drawable/delete"
-/>
-        </LinearLayout>
+            android:layout_margin="4dp"
+            android:background="#FFFFFF"
+            android:scaleType="fitCenter"
+            android:src="@drawable/delete" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -47,6 +47,7 @@ public class bItemAdapter extends RecyclerView.Adapter<bItemAdapter.bItemViewHol
     public void onBindViewHolder(@NonNull bItemViewHolder holder, final int position) {
         holder.charityItemTxt.setText(charityItems.get(position).description);
         Picasso.get().load(charityItems.get(position).getImage()).into(holder.charityItemImg);
+        holder.ssize.setText(charityItems.get(position).getSize());
         holder.view_detail_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,12 +66,13 @@ public class bItemAdapter extends RecyclerView.Adapter<bItemAdapter.bItemViewHol
             public class bItemViewHolder extends RecyclerView.ViewHolder {
                 public Button  view_detail_btn;
                 public ImageView charityItemImg;
-                public TextView charityItemTxt;
+                public TextView charityItemTxt,ssize;
 
                 public bItemViewHolder(@NonNull View itemView) {
                     super(itemView);
                     charityItemImg = (ImageView) itemView.findViewById(R.id.charityItemImg);
                     charityItemTxt = (TextView) itemView.findViewById(R.id.charityItemTxt);
+                    ssize = (TextView) itemView.findViewById(R.id.ssize);
                     view_detail_btn = (Button) itemView.findViewById(R.id.view_detail_btn);
                 }
             }

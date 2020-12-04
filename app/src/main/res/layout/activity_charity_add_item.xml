@@ -56,39 +56,26 @@
 
 
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_margin="10dp">-->
+            <!--    <LinearLayout-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:orientation="horizontal"-->
+            <!--        android:layout_margin="10dp">-->
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="رقم القطعة:"-->
-<!--            android:textSize="25sp"-->
-<!--            android:gravity="center"-->
-<!--            android:textColor="@android:color/black"-->
-<!--            android:layout_marginLeft="10dp"/>-->
-<!--        <EditText-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:id="@+id/itemNumber"-->
-<!--            android:inputType="number"/>-->
-<!--    </LinearLayout>-->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:id="@+id/Li"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
->
-            <ImageView
-                android:layout_width="130pt"
-                android:layout_height="120pt"
-                android:layout_gravity="center"
-                android:id="@+id/Imgl"
-/>
-        </LinearLayout>
+            <!--        <TextView-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:text="رقم القطعة:"-->
+            <!--            android:textSize="25sp"-->
+            <!--            android:gravity="center"-->
+            <!--            android:textColor="@android:color/black"-->
+            <!--            android:layout_marginLeft="10dp"/>-->
+            <!--        <EditText-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="match_parent"-->
+            <!--            android:id="@+id/itemNumber"-->
+            <!--            android:inputType="number"/>-->
+            <!--    </LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/ImgLin"
@@ -115,11 +102,11 @@
                     android:gravity="center"
                     android:text="إضافة صورة"
                     android:textSize="20dp" />
-]
+                ]
 
             </LinearLayout>
 
-    <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -137,199 +124,199 @@
                     android:layout_width="50pt"
                     android:layout_height="match_parent"
                     android:id="@+id/itemCount"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:id="@+id/titemCount"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemCount"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
 
             </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="وصف القطعة:"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/itemDesc"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="وصف القطعة:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemDesc"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="اسم الجمعية:"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/itemChName"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="اسم الجمعية:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemChName"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:text="النوع:"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"/>
-        <Spinner
-            android:layout_width="73pt"
-            android:layout_height="match_parent"
-            android:id="@+id/itemType"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:id="@+id/titemType"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="10dp"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="النوع:"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <Spinner
+                    android:layout_width="73pt"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemType"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemType"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="الصنف:"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"/>
-        <Spinner
-            android:layout_width="70pt"
-            android:layout_height="match_parent"
-            android:id="@+id/itemGender"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:id="@+id/titemGender"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="الصنف:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <Spinner
+                    android:layout_width="70pt"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemGender"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemGender"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
 
-    </LinearLayout>
+            </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="اللون:"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"/>
-        <Spinner
-            android:layout_width="73pt"
-            android:layout_height="match_parent"
-            android:id="@+id/itemColor"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:id="@+id/titemColor"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="10dp"/>
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="المقاس:"
-            android:layout_marginLeft="10dp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"/>
-        <Spinner
-            android:layout_width="70pt"
-            android:layout_height="match_parent"
-            android:id="@+id/itemSize"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="18sp"
-            android:id="@+id/titemSize"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="10dp"/>
-    </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="اللون:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <Spinner
+                    android:layout_width="73pt"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemColor"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemColor"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50pt"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_margin="10dp"
-        android:layout_marginEnd="30dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="10dp">
 
-        <Button
-            android:id="@+id/addItemBtn"
-            android:layout_width="55pt"
-            android:layout_height="24pt"
-            android:layout_margin="20dp"
-            android:background="@drawable/button_background"
-            android:text="إضافة قطعة"
-            android:textSize="18dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="المقاس:"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"/>
+                <Spinner
+                    android:layout_width="70pt"
+                    android:layout_height="match_parent"
+                    android:id="@+id/itemSize"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="18sp"
+                    android:id="@+id/titemSize"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="10dp"/>
+            </LinearLayout>
 
-        <Button
-            android:id="@+id/cancelBtn"
-            android:layout_width="50pt"
-            android:layout_height="22pt"
-            android:layout_margin="20dp"
-            android:background="@drawable/button_background"
-            android:text="الغاء"
-            android:textSize="18dp" />
-    </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50pt"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="30dp">
+
+                <Button
+                    android:id="@+id/addItemBtn"
+                    android:layout_width="55pt"
+                    android:layout_height="24pt"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/button_background"
+                    android:text="إضافة قطعة"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/cancelBtn"
+                    android:layout_width="50pt"
+                    android:layout_height="22pt"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/button_background"
+                    android:text="الغاء"
+                    android:textSize="18dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

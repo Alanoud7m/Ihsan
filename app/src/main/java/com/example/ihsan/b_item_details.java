@@ -105,7 +105,7 @@ public class b_item_details extends AppCompatActivity {
                     ch = documentSnapshot.toObject(CharityItem.class);
 
                     assert ch != null;
-                    itemId = ch.getId();
+                    itemId = itemId;
                     titemCount.setText(ch.getCount());
                     titemGender.setText(ch.getGender());
                     titemColor.setText(ch.getColor());
@@ -193,7 +193,6 @@ public class b_item_details extends AppCompatActivity {
                 // sRef = storage.getReference().child("cartList/" + randomKey);
                 cart ca = new cart();
                 ca.item_id = itemId;
-                 //       ca.setItem_img(Imgl.toString());
                         ca.setItem_img(ch.getImage());
                         ca.itemDesc = itemDesc.getText().toString();
                 ca.itemChName = itemChName.getText().toString();
