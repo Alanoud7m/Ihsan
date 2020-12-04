@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +8,7 @@
     android:fitsSystemWindows="true"
     android:scrollbarTrackVertical="@drawable/button_background"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
     android:orientation="vertical"
     tools:context=".order_conform">
 
@@ -127,6 +129,9 @@
 
         </LinearLayout>
 
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
            <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -142,17 +147,11 @@
             android:textSize="18sp" />
 
 
-               <androidx.core.widget.NestedScrollView
-                   android:layout_width="match_parent"
-                   android:layout_marginBottom="7pt"
-                   android:layout_height="90pt">
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="15dp"
-                android:layout_marginBottom="90pt"
                 android:id="@+id/recycl"/>
-           </androidx.core.widget.NestedScrollView>
 
 
                <LinearLayout
@@ -192,5 +191,10 @@
             android:text="تأكيد الطلب"
             android:textSize="18dp" />
     </LinearLayout>
-</LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+
+
+    </LinearLayout>
 

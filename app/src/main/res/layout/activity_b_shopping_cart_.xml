@@ -72,6 +72,16 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
+        <TextView
+            android:id="@+id/noth"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="لا يوجد اي قطع في عربة التسوق !"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"/>
+
         <Button
             android:id="@+id/nextt"
             android:layout_width="60pt"

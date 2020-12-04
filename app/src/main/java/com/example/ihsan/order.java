@@ -2,24 +2,30 @@ package com.example.ihsan;
 
 public class order {
     String benef_addres ,benef_name ,benef_phone ,
-            charity_name ,
+            charity_name ,order_date,order_status,numOfBases,
             item_desc ,item_id ,item_size,item_image,
-            order_id ,volenteer_name;
+             volenteer_name;
 
-    public order(String benef_addres, String benef_name, String benef_phone, String charity_name,  String item_desc, String item_id, String item_size, String item_image, String order_id, String volenteer_name) {
+int order_id;
+    public order() {
+    }
+
+
+    public order(String benef_addres, String benef_name, String benef_phone, String charity_name, String order_date, String order_status, String numOfBases, String item_desc, String item_id, String item_size, String item_image, String volenteer_name , int order_id) {
         this.benef_addres = benef_addres;
         this.benef_name = benef_name;
         this.benef_phone = benef_phone;
         this.charity_name = charity_name;
+        this.order_date = order_date;
+        this.order_status = order_status;
+        this.numOfBases = numOfBases;
         this.item_desc = item_desc;
         this.item_id = item_id;
         this.item_size = item_size;
         this.item_image = item_image;
-        this.order_id = order_id;
         this.volenteer_name = volenteer_name;
-    }
+        this.order_id = order_id;
 
-    public order() {
     }
 
     public String getBenef_addres() {
@@ -42,12 +48,9 @@ public class order {
         return benef_phone;
     }
 
-
-
     public void setBenef_phone(String benef_phone) {
         this.benef_phone = benef_phone;
     }
-
 
     public String getCharity_name() {
         return charity_name;
@@ -57,7 +60,29 @@ public class order {
         this.charity_name = charity_name;
     }
 
+    public String getOrder_date() {
+        return order_date;
+    }
 
+    public void setOrder_date(String order_date) {
+        this.order_date = order_date;
+    }
+
+    public String getOrder_status() {
+        return order_status;
+    }
+
+    public void setOrder_status(String order_status) {
+        this.order_status = order_status;
+    }
+
+    public String getNumOfBases() {
+        return numOfBases;
+    }
+
+    public void setNumOfBases(String numOfBases) {
+        this.numOfBases = numOfBases;
+    }
 
     public String getItem_desc() {
         return item_desc;
@@ -91,11 +116,11 @@ public class order {
         this.item_image = item_image;
     }
 
-    public String getOrder_id() {
+    public int getOrder_id() {
         return order_id;
     }
 
-    public void setOrder_id(String order_id) {
+    public void setOrder_id(int order_id) {
         this.order_id = order_id;
     }
 
