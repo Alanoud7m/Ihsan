@@ -63,9 +63,9 @@
             android:layout_margin="5dp"
             android:orientation="horizontal">
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/updateBtn"
-                android:layout_width="44dp"
+            <ImageButton
+                android:id="@+id/addBtn"
+                android:layout_width="48dp"
                 android:layout_height="32dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"

@@ -25,7 +25,7 @@
             android:src="@drawable/gp_logo" />
 
         <LinearLayout
-            android:layout_width="45pt"
+            android:layout_width="47pt"
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="وصف القطعة"
                 android:textColor="@android:color/black"
-                android:textSize="14sp" />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/charityName"

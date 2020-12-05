@@ -151,40 +151,31 @@ public class order_conform extends AppCompatActivity {
                             cart ch1 = snapshot.toObject(cart.class);
                             ch1.item_id = snapshot.getId();
                             items.add(ch1);
+                            fStore.collection("cartList").document(user.getEmail().toString()).collection("items").document(snapshot.getId()).delete();
 
+                        }
+                    }
+                });
+                           for(int i=0 ; i<items.size(); i++){
 
-                            item_desc = ch1.itemDesc.toString();
-                            item_id = ch1.getItem_id();
-                            item_size = ch1.getItemSize().toString();
-                            item_image = ch1.getItem_img();
-                            charity_name = ch1.getItemChName();
+                            item_desc = items.get(i).itemDesc.toString();
+                            item_id =  items.get(i).getItem_id().toString();
+                            item_size =  items.get(i).getItemSize().toString();
+                            item_image =  items.get(i).getItem_img();
+                            charity_name =  items.get(i).getItemChName();
                             order_date=date;
-                            numOfBases = ch1.needCount;
-
-
-
-/*
-                            ch = new CharityItem();
-                            fStore = FirebaseFirestore.getInstance();
-                            fStore.collection("CharityItems").document(item_id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                @Override
-                                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    x = (String) documentSnapshot.get("count");
-
-                                }
-                            });
-                            m = (int)toInt(x);
-
+                            numOfBases =  items.get(i).needCount;
                             n = (int) toInt(numOfBases);
-                        //    editCharityItems(n,m);
+                     //       editCharityItems(item_id,n);
 
-                            if (n > m) {
+/*                            if (n > m) {
                                 makeText(order_conform.this, " عدد القطع المطلوبة من  أكثر من المتوفرة! ", LENGTH_SHORT).show();
+                                break;
                             } else if (n == m) {
                                 fStore = FirebaseFirestore.getInstance();
                                 fStore.collection("CharityItems").document(item_id).delete();
-                            }
-                  */          /*else if (n < m) {
+                            }*/
+                        /*  else if (n < m) {
                                 int t = m - n;
                                 String ss = toStr(t);
 
@@ -204,14 +195,10 @@ public class order_conform extends AppCompatActivity {
                             }
 */
 
-
-                            fStore.collection("cartList").document(user.getEmail().toString()).collection("items").document(snapshot.getId()).delete();
-
                             addOrder();
 
                         }
-                    }
-                });
+
                 Map<String, Object> newCounter = new HashMap<>();
                 newCounter.put("numOfItems", 0);
                 fStore.collection("cartList").document(user.getEmail().toString()).set(newCounter);
@@ -263,23 +250,18 @@ public class order_conform extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 orderId = Integer.valueOf(documentSnapshot.get("order_id").toString());
-                orderId++;
 
                 final order ord = new order(benef_addres, benef_name,benef_phone,
                         charity_name, order_date, order_status, numOfBases, item_desc, item_id, item_size, item_image,
                         "بانتظار متطوع التوصيل.", orderId);
+                ++orderId;
 
-                fStore = FirebaseFirestore.getInstance();
-                fStore.collection("Orders").add(ord).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
+
                         Map<String, Object> nn = new HashMap<>();
-                        nn.put("order_id", orderId);
+                        nn.put("order_id",  orderId);
                         fStore.collection("OrderId").document("order_id").set(nn);
-
-                    }
-
-                });
+                fStore = FirebaseFirestore.getInstance();
+                fStore.collection("Orders").add(ord);
             }
         });
 
@@ -289,7 +271,14 @@ public class order_conform extends AppCompatActivity {
 
 
 
-    void editCharityItems(int n, int m) {
+    void editCharityItems(final String item_id, final int n) {
+        ch = new CharityItem();
+        fStore = FirebaseFirestore.getInstance();
+        fStore.collection("CharityItems").document(item_id.toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                x = (String) documentSnapshot.get("count");
+              int  m = (int)toInt(x);
 
         if (n > m) {
             makeText(order_conform.this, " الرجاء تعديل عدد القطع من عربة التسوق .. عدد القطع المطلوبة من  أكثر من المتوفرة! ", LENGTH_SHORT).show();
@@ -315,6 +304,8 @@ public class order_conform extends AppCompatActivity {
             fStore.collection("CharityItems").document(item_id).update(result);
         }
 
+            }
+        });
     }
 
 

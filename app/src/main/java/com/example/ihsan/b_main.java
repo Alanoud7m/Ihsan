@@ -14,28 +14,93 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class b_main extends AppCompatActivity {
     MenuItem miLogout;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
+    FirebaseFirestore fStore;
+    FirebaseAuth fAuth;
+    String s =null, status =null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b_main);
 
+        fAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = fAuth.getCurrentUser();
+        fStore = FirebaseFirestore.getInstance();
+
+        String userId = user.getUid();
+        fStore.collection("Beneficiaries").document(userId.toString()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@javax.annotation.Nullable DocumentSnapshot documentSnapshot, @javax.annotation.Nullable FirebaseFirestoreException e) {
+                status = (documentSnapshot.get("status").toString());
+            }
+
+        });
+
+
+
         Button viewItemsBtn = findViewById(R.id.viewItem);
         viewItemsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(),b_view_items.class));
-            }
-        });
+                public void onClick(View view) {
+                 if (status.equals("Refused")) {
+                                AlertDialog.Builder ab = new AlertDialog.Builder(b_main.this);
+                                ab.setMessage("تم رفض حسابك !");
+                                ab.setCancelable(true);
+                                ab.setPositiveButton("موافق", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        startActivity(new Intent(getBaseContext(), b_main.class));
+                                    }
+                                });
+
+                                AlertDialog alert = ab.create();
+                                alert.show();
+
+
+                            } else
+                                if (status.equals("Waiting")) {
+                                AlertDialog.Builder ab = new AlertDialog.Builder(b_main.this);
+
+                                ab.setMessage("لم يتم تأكيد حسابك ، يرجى المحاولة لاحقاً");
+                                ab.setCancelable(false);
+                                ab.setPositiveButton("موافق", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        startActivity(new Intent(getBaseContext(), b_main.class));
+                                    }
+                                });
+
+                                AlertDialog alert = ab.create();
+                                alert.show();
+                            }
+
+                              else{
+
+
+                            startActivity(new Intent(getBaseContext(), b_view_items.class));
+                        }}
+                    });
+
 
         miLogout = findViewById(R.id.logout);
         Toolbar toolbar = findViewById(R.id.b_toolbar);
@@ -79,6 +144,8 @@ public class b_main extends AppCompatActivity {
                 break;
 
             case  R.id.order:
+                startActivity(new Intent(b_main.this, b_myorders.class));
+
                 break;
 
             case  R.id.call:

@@ -226,13 +226,6 @@ public class createAccountForBeneficiary extends AppCompatActivity {
             }
         });
 
-        fAuth = FirebaseAuth.getInstance();
-        final FirebaseUser currentUser = fAuth.getCurrentUser();
-        Map<String, Object> newCounter = new HashMap<>();
-        newCounter.put("numOfItems", 0);
-        fStore.collection("cartList").document(currentUser.getEmail().toString()).set(newCounter);
-        fStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").document().delete();
-
     }
 
     @Override

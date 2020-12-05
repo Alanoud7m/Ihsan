@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.protobuf.StringValue;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -59,13 +60,14 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
 
     public benefOrderAdapter.orderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.benef_order_layout,parent,false);
-        benefOrderAdapter.orderHolder orddd =new benefOrderAdapter.orderHolder(view);
+        orderHolder orddd =new orderHolder(view);
         return orddd;
     }
 
     @Override
     public void onBindViewHolder(@NonNull orderHolder holder, final int position) {
-        holder.ON.setText(orders.get(position).order_id);
+        String s = toStr(orders.get(position).order_id);
+        holder.ON.setText(s);
         holder.OS.setText(orders.get(position).order_status);
         holder.NOB.setText(orders.get(position).numOfBases);
 
@@ -116,6 +118,22 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
 
 
         }
+    }
+
+    String toStr(int a) {
+        String c="";
+        if (a==0) { c="٠"; }
+        else if (a==1) { c="١"; }
+        else if (a==2) { c="٢"; }
+        else if (a==3) { c="٣"; }
+        else if (a==4) { c="٤"; }
+        else if (a==5) { c="٥"; }
+        else if (a==6) { c="٦"; }
+        else if (a==7) { c="٧"; }
+        else if (a==8) { c="٨"; }
+        else if (a==9) { c="٩"; }
+        else if (a==10) { c="١٠"; }
+        return c;
     }
 
 }

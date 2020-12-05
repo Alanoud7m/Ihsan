@@ -1,32 +1,28 @@
 package com.example.ihsan;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,6 +32,7 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -44,7 +41,10 @@ public class b_view_items extends AppCompatActivity {
     RecyclerView recyclerView;
     bItemAdapter bItemAdapter;
     FirebaseFirestore fireStore;
+    FirebaseStorage storage;
+    FirebaseAuth fAuth;
     MenuItem miLogout;
+    int numOf=0;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
@@ -57,6 +57,7 @@ public class b_view_items extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler_tow);
         charityItems = new ArrayList<CharityItem>();
         filteredList = new ArrayList<CharityItem>();
+
 
         //shopping cart icon
         ImageButton shoppingcart = findViewById(R.id.shoppingcart);
@@ -114,6 +115,7 @@ public class b_view_items extends AppCompatActivity {
                 break;
 
             case  R.id.order:
+                startActivity(new Intent(b_view_items.this, b_myorders.class));
                 break;
 
             case  R.id.call:
@@ -189,6 +191,75 @@ public class b_view_items extends AppCompatActivity {
                         startActivity(intentd);
                     }
                 });
+
+
+                bItemAdapter.setAddButtonListener(new bItemAdapter.OnAddButtonItemClickListener() {
+                    @Override
+                    public void onAddIsClick(View button, final int position) {
+
+                        fAuth = FirebaseAuth.getInstance();
+                        final FirebaseUser currentUser = fAuth.getCurrentUser();
+
+                        fireStore.collection("cartList").document(currentUser.getEmail().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                          numOf = Integer.valueOf(documentSnapshot.get("numOfItems").toString());
+                                ++numOf;
+                                storage = FirebaseStorage.getInstance();
+                                // sRef = storage.getReference().child("cartList/" + randomKey);
+                                for (int i=0 ; i<charityItems.size();i++){
+                                    if(charityItems.get(i).id.equals(charityItems.get(position).id)){
+                                        CharityItem ch=charityItems.get(i);
+                                cart ca = new cart();
+                                ca.item_id = ch.id.toString();
+                                ca.setItem_img(ch.getImage());
+                                ca.itemDesc = ch.description.toString();
+                                ca.itemChName = ch.charity.toString();
+                                ca.needCount = "١";
+                                ca.setItemSize(ch.getSize());
+
+                                fireStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").add(ca).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                    @Override
+                                    public void onSuccess(DocumentReference documentReference) {
+                                        Map<String, Object> newCounter = new HashMap<>();
+                                        newCounter.put("numOfItems", numOf);
+                                        fireStore.collection("cartList").document(currentUser.getEmail().toString()).set(newCounter).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+                                                AlertDialog.Builder ab = new AlertDialog.Builder(b_view_items.this);
+
+                                                ab.setMessage("تم اضافة القطعة إلى سلة التسوق ، هل تريد انهاء الطلب أو متابعة التسوق ؟");
+                                                ab.setCancelable(false);
+                                                ab.setPositiveButton("انهاء الطلب", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        startActivity(new Intent(getBaseContext(), b_shopping_cart_Activity.class));
+                                                    }
+                                                });
+
+                                                ab.setNegativeButton(" متابعة التسوق", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        startActivity(new Intent(getBaseContext(), b_view_items.class));
+                                                    }
+
+                                                });
+                                                AlertDialog alert = ab.create();
+                                                alert.show();
+                                            }
+                                        });
+
+                                    }
+                                });
+
+                                    }}
+                            }
+                        });
+
+                    }
+
+
+            });
 
                     recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(),2));
                 recyclerView.setAdapter(bItemAdapter);

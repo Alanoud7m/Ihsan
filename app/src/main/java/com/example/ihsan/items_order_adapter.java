@@ -24,6 +24,7 @@ public class items_order_adapter extends RecyclerView.Adapter<items_order_adapte
     CharityItemAdapter.OnDeleteButtonItemClickListener deleteButtonListener;
 
 
+
     public interface OnDeleteButtonItemClickListener {
         void onDeleteIsClick(View button, int position);
     }
