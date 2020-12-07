@@ -97,7 +97,7 @@ public class b_main extends AppCompatActivity {
                               else{
 
 
-                            startActivity(new Intent(getBaseContext(), b_view_items.class));
+                            startActivity(new Intent(getBaseContext(), b_homepage.class));
                         }}
                     });
 
@@ -136,6 +136,8 @@ public class b_main extends AppCompatActivity {
     public void UserMenuSelected(MenuItem menuItem){
         switch (menuItem.getItemId()) {
             case  R.id.address:
+                startActivity(new Intent(b_main.this, b_main.class));
+
                 break;
 
             case  R.id.account:

@@ -4,7 +4,7 @@ public class order {
     String benef_addres ,benef_name ,benef_phone ,
             charity_name ,order_date,order_status,numOfBases,
             item_desc ,item_id ,item_size,item_image,
-             volenteer_name;
+             volenteer_name,orderID;
 
 int order_id;
     public order() {

@@ -51,6 +51,7 @@ public class order_conform extends AppCompatActivity {
     TextView numOfItemm;
     RadioButton oldAddress;
     RadioButton newAddress;
+    RadioButton takeChar;
     private RecyclerView recycler_shcart;
     private Button place;
 
@@ -85,6 +86,7 @@ public class order_conform extends AppCompatActivity {
         setContentView(R.layout.activity_order_conform);
 
         //for this inteface
+        takeChar = (RadioButton) findViewById(R.id.takeChar);
         oldAddress = (RadioButton) findViewById(R.id.oldAddress);
         newAddress = (RadioButton) findViewById(R.id.newAddress);
         final EditText otherAddress = (EditText) findViewById(R.id.otherAddress);
@@ -128,7 +130,6 @@ public class order_conform extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 if (newAddress.isChecked()) {
                     String s =(String) otherAddress.getText().toString();
                     if (s.matches("")) {
@@ -138,7 +139,10 @@ public class order_conform extends AppCompatActivity {
                     else
                         benef_addres = s;
                 }
-
+                else  if(takeChar.isChecked()) {
+                    String cha ="استلام الطلب من الجمعية";
+                    benef_addres =cha;
+                }
 
                 fStore = FirebaseFirestore.getInstance();
                 final FirebaseUser user = fAuth.getCurrentUser();
@@ -149,7 +153,7 @@ public class order_conform extends AppCompatActivity {
                         filteredList.clear();
                         for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
                             cart ch1 = snapshot.toObject(cart.class);
-                            ch1.item_id = snapshot.getId();
+                         //   ch1.item_id = snapshot.getId();
                             items.add(ch1);
                             fStore.collection("cartList").document(user.getEmail().toString()).collection("items").document(snapshot.getId()).delete();
 
@@ -166,7 +170,9 @@ public class order_conform extends AppCompatActivity {
                             order_date=date;
                             numOfBases =  items.get(i).needCount;
                             n = (int) toInt(numOfBases);
-                     //       editCharityItems(item_id,n);
+
+
+                           editCharityItems(item_id,n);
 
 /*                            if (n > m) {
                                 makeText(order_conform.this, " عدد القطع المطلوبة من  أكثر من المتوفرة! ", LENGTH_SHORT).show();
@@ -203,7 +209,7 @@ public class order_conform extends AppCompatActivity {
                 newCounter.put("numOfItems", 0);
                 fStore.collection("cartList").document(user.getEmail().toString()).set(newCounter);
                 Toast.makeText(getBaseContext(),  "تم الطلب بنجاح", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(getBaseContext(), b_view_items.class));
+                startActivity(new Intent(getBaseContext(), b_homepage.class));
 
             }
         });
@@ -222,7 +228,7 @@ public class order_conform extends AppCompatActivity {
                 filteredList.clear();
                 for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
                     cart ch1 = snapshot.toObject(cart.class);
-                    ch1.item_id = snapshot.getId();
+        //            ch1.item_id = snapshot.getId();
                     items.add(ch1);
                 }
 
@@ -256,7 +262,6 @@ public class order_conform extends AppCompatActivity {
                         "بانتظار متطوع التوصيل.", orderId);
                 ++orderId;
 
-
                         Map<String, Object> nn = new HashMap<>();
                         nn.put("order_id",  orderId);
                         fStore.collection("OrderId").document("order_id").set(nn);
@@ -274,36 +279,29 @@ public class order_conform extends AppCompatActivity {
     void editCharityItems(final String item_id, final int n) {
         ch = new CharityItem();
         fStore = FirebaseFirestore.getInstance();
-        fStore.collection("CharityItems").document(item_id.toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        fStore.collection("CharityItems").document(item_id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                x = (String) documentSnapshot.get("count");
-              int  m = (int)toInt(x);
+                x = String.valueOf(documentSnapshot.get("count"));
+     //           int  m = (int)toInt(x);
+                int  m =toInt(x);
 
         if (n > m) {
             makeText(order_conform.this, " الرجاء تعديل عدد القطع من عربة التسوق .. عدد القطع المطلوبة من  أكثر من المتوفرة! ", LENGTH_SHORT).show();
-        } else if (n == m) {
-            fStore = FirebaseFirestore.getInstance();
-            fStore.collection("CharityItems").document(item_id).delete();
-        } else if (n < m) {
+            finish();
+        } else if (n <= m) {
             int t = m - n;
-            String ss = toStr(t);
+            if (t == 0) {
+                fStore.collection("CharityItems").document(item_id).delete();
 
-            HashMap<String, Object> result = new HashMap<>();
+            } else {
+                String ss = toStr(t);
+                HashMap<String, Object> result = new HashMap<>();
+                result.put("count", ss);
 
-            result.put("charity", ch.charity);
-            result.put("color", ch.color);
-            result.put("count", ss);
-            result.put("description", ch.description);
-            result.put("gender", ch.gender);
-            result.put("id", ch.id);
-            result.put("image", ch.getImage());
-            result.put("number", ch.number);
-            result.put("size", ch.size);
-            result.put("type", ch.type);
-            fStore.collection("CharityItems").document(item_id).update(result);
+             fStore.collection("CharityItems").document(item_id).update(result);
+            }
         }
-
             }
         });
     }

@@ -15,10 +15,9 @@
 
     <LinearLayout
         android:layout_width="120pt"
-        android:layout_height="12pt"
-        android:layout_marginVertical="2pt"
+        android:layout_height="13pt"
+        android:layout_marginTop="4pt"
         android:layout_marginHorizontal="7pt"
-        android:layout_marginTop="5pt"
         android:orientation="horizontal">
 
         <TextView
@@ -41,9 +40,9 @@
 
     <LinearLayout
         android:layout_width="120pt"
-        android:layout_height="12pt"
+        android:layout_height="15pt"
         android:layout_marginHorizontal="7pt"
-        android:layout_marginTop="20pt"
+        android:layout_marginTop="16pt"
         android:orientation="horizontal">
 
         <TextView
@@ -63,14 +62,15 @@
             android:layout_marginHorizontal="2pt"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
+
 
 
     </LinearLayout>
 
     <Button
         android:id="@+id/DO"
-        android:layout_width="40pt"
+        android:layout_width="42pt"
         android:layout_height="15pt"
         android:layout_gravity="left"
         android:layout_marginHorizontal="5pt"
@@ -83,34 +83,36 @@
 
     <Button
     android:id="@+id/EO"
-        android:layout_width="40pt"
+        android:layout_width="42pt"
         android:layout_height="15pt"
     android:layout_gravity="left"
-    android:layout_marginHorizontal="5pt"
-        android:layout_marginVertical="19pt"
-        android:layout_marginTop="18pt"
+        android:visibility="gone"
+
+        android:layout_marginHorizontal="5pt"
+        android:layout_marginVertical="38pt"
+        android:layout_marginTop="33pt"
     android:background="@drawable/button_background"
     android:text="إلغاء الطلب"
     android:textStyle="bold"
     android:textSize="12dp" />
 
     <Button
-    android:id="@+id/DD"
-        android:layout_width="40pt"
+    android:id="@+id/track"
+        android:layout_width="42pt"
         android:layout_height="15pt"
     android:layout_gravity="left"
         android:layout_marginHorizontal="5pt"
-        android:layout_marginVertical="37pt"
-     android:layout_marginTop="33pt"
+        android:layout_marginVertical="20pt"
+     android:layout_marginTop="18pt"
     android:background="@drawable/button_background"
-    android:text="تقييم التوصيل"
+    android:text="تتبع الطلب"
     android:textStyle="bold"
     android:textSize="12dp" />
     <LinearLayout
         android:layout_width="120pt"
-        android:layout_height="12pt"
+        android:layout_height="13pt"
         android:layout_marginHorizontal="7pt"
-        android:layout_marginTop="37pt"
+        android:layout_marginTop="38pt"
         android:orientation="horizontal">
 
         <TextView

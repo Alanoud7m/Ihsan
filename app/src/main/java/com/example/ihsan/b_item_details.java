@@ -185,10 +185,9 @@ public class b_item_details extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-                final Intent intent = getIntent();
+/*                final Intent intent = getIntent();
                 String e = intent.getAction();
-                if(intent.getExtras()!=null && e.equals("k")) {
+                if(intent.getExtras()!=null && e.equals("k")) {*/
                     fStore.collection("cartList").document(currentUser.getEmail().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -197,11 +196,11 @@ public class b_item_details extends AppCompatActivity {
                             storage = FirebaseStorage.getInstance();
                             // sRef = storage.getReference().child("cartList/" + randomKey);
                             cart ca = new cart();
-                            ca.item_id = itemId;
+                            ca.item_id = ch.id.toString();
                             ca.setItem_img(ch.getImage());
-                            ca.itemDesc = itemDesc.getText().toString();
-                            ca.itemChName = itemChName.getText().toString();
-                            ca.needCount = needCount.getSelectedItem().toString();
+                            ca.itemDesc = ch.description.toString();
+                            ca.itemChName = ch.charity.toString();
+                            ca.needCount = (String) needCount.getSelectedItem();
                             ca.setItemSize(ch.getSize());
                             fStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").add(ca).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
@@ -242,7 +241,7 @@ public class b_item_details extends AppCompatActivity {
                     });
 
                 }
-                    }
+                 //   }
                 });
 
             }

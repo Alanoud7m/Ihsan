@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:text="وصف القطعة"
                 android:textColor="@android:color/black"
-                android:textSize="13sp" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/charityName"
