@@ -69,6 +69,11 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
         holder.OS.setText(orders.get(position).order_status);
         holder.NOB.setText(orders.get(position).numOfBases);
 
+        if(orders.get(position).getOrder_status().equals("طلب جديد"))
+            orderHolder.evis();
+        if(orders.get(position).getOrder_status().equals("تم التوصيل"))
+            orderHolder.dvis();
+
         holder.DO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,9 +104,11 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
         return orders.size();
     }
 
-    public  class orderHolder extends RecyclerView.ViewHolder
+    public static class orderHolder extends RecyclerView.ViewHolder
     {
-        public Button DO,EO,DD ;
+        public Button DO;
+        public static Button EO;
+        public static Button DD ;
         public TextView ON,OS,NOB;
 
         public orderHolder(@NonNull View itemView) {
@@ -116,6 +123,8 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
 
 
         }
+        static void evis(){ EO.setVisibility(View.VISIBLE);}
+        static void dvis(){ DD.setVisibility(View.VISIBLE);}
     }
 
 }

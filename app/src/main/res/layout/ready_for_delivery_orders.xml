@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="470dp"
+    android:layout_height="125dp"
+    android:layout_weight="1"
+    android:layoutDirection="rtl"
+    android:layout_margin="5dp">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="262dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/OrderNumLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="15dp"
+                android:text="رقم الطلب: "
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/OrderNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="٠٠٠٠"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/AddressLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:text="عنوان التوصيل: "
+                android:textColor="@android:color/black"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/Address"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginRight="15dp"
+                android:text="٠٠٠٠٠"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="206dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/OrderDetailsBtn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_background"
+                android:text="تفاصيل الطلب" />
+
+            <Button
+                android:id="@+id/DeliverOrNotBtn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/button_background"
+                android:text="توصيل" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
