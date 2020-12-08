@@ -3,20 +3,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_gravity="center"
-    android:layout_height="48pt"
+    android:layout_height="55pt"
     android:layout_weight="1"
     android:layoutDirection="rtl"
     android:layout_marginVertical="5dp"
     android:layout_marginHorizontal="13dp"
+
+    android:padding="2pt"
     android:orientation="vertical">
 
 
 
     <LinearLayout
         android:layout_width="120pt"
-        android:layout_height="12pt"
+
+        android:layout_height="13pt"
+        android:layout_marginTop="4pt"
         android:layout_marginHorizontal="7pt"
-        android:layout_marginTop="5pt"
         android:orientation="horizontal">
 
         <TextView
@@ -39,15 +42,19 @@
 
     <LinearLayout
         android:layout_width="120pt"
-        android:layout_height="12pt"
+
+        android:layout_height="15pt"
         android:layout_marginHorizontal="7pt"
-        android:layout_marginTop="19pt"
-        android:orientation="horizontal">
+        android:layout_marginTop="16pt"
+
+  android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_marginHorizontal="2pt"
             android:layout_height="wrap_content"
+
+            android:layout_marginVertical="2pt"
             android:text="حالة الطلب : "
             android:textColor="@android:color/black"
             android:textStyle="bold"
@@ -55,22 +62,24 @@
 
         <TextView
             android:id="@+id/OS"
+            android:layout_marginVertical="2pt"
             android:layout_width="wrap_content"
             android:layout_marginHorizontal="2pt"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="14sp" />
-
+            android:textSize="12sp" />
 
     </LinearLayout>
 
     <Button
         android:id="@+id/DO"
-        android:layout_width="35pt"
-        android:layout_height="12pt"
+
+        android:layout_width="42pt"
+        android:layout_height="15pt"
         android:layout_gravity="left"
-        android:layout_marginHorizontal="3pt"
-        android:layout_marginVertical="3pt"
+        android:layout_marginHorizontal="5pt"
+        android:layout_marginVertical="2pt"
+        android:layout_marginLeft="10pt"
         android:background="@drawable/button_background"
         android:text="تفاصيل الطلب"
         android:textStyle="bold"
@@ -78,37 +87,45 @@
 
     <Button
     android:id="@+id/EO"
-    android:layout_width="35pt"
-    android:layout_height="12pt"
+        android:layout_width="42pt"
+        android:layout_height="15pt"
     android:layout_gravity="left"
-    android:layout_marginHorizontal="2pt"
-    android:layout_marginTop="18pt"
+        android:visibility="gone"
+
+        android:layout_marginHorizontal="5pt"
+        android:layout_marginVertical="38pt"
+        android:layout_marginTop="33pt"
     android:background="@drawable/button_background"
     android:text="إلغاء الطلب"
     android:textStyle="bold"
     android:textSize="12dp" />
 
     <Button
-    android:id="@+id/DD"
-    android:layout_width="35pt"
-    android:layout_height="12pt"
+
+    android:id="@+id/track"
+        android:layout_width="42pt"
+        android:layout_height="15pt"
     android:layout_gravity="left"
-    android:layout_marginHorizontal="2pt"
-     android:layout_marginTop="33pt"
+        android:layout_marginHorizontal="5pt"
+        android:layout_marginVertical="20pt"
+     android:layout_marginTop="18pt"
     android:background="@drawable/button_background"
-    android:text="تقييم التوصيل"
+    android:text="تتبع الطلب"
     android:textStyle="bold"
     android:textSize="12dp" />
     <LinearLayout
         android:layout_width="120pt"
-        android:layout_height="12pt"
+
+        android:layout_height="13pt"
         android:layout_marginHorizontal="7pt"
-        android:layout_marginTop="32pt"
+        android:layout_marginTop="38pt"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_marginHorizontal="2pt"
+
+            android:layout_marginVertical="2pt"
             android:layout_height="wrap_content"
             android:text="عدد القطع : "
             android:textColor="@android:color/black"
@@ -120,6 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="2pt"
+            android:layout_marginVertical="2pt"
             android:textSize="14sp"
             android:textStyle="bold" />
     </LinearLayout>

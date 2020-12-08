@@ -80,6 +80,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:id="@+id/Li"
+                android:layout_marginBottom="5pt"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 >
@@ -96,6 +97,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="11pt"
                 android:layout_margin="10dp">
 
                 <TextView
@@ -104,6 +106,7 @@
                     android:text="عدد القطع المتوفرة:"
                     android:textSize="18sp"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:layout_marginLeft="10dp"/>
 
@@ -127,6 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="وصف القطعة:"
+                    android:textStyle="bold"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:textColor="@android:color/black"
@@ -147,6 +151,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="اسم الجمعية:"
+                    android:textStyle="bold"
+
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:textColor="@android:color/black"
@@ -169,6 +175,7 @@
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:text="النوع:"
+                    android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"/>
 
@@ -194,6 +201,7 @@
                     android:text="الصنف:"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"/>
 
@@ -218,6 +226,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="اللون:"
+                    android:textStyle="bold"
                     android:layout_marginLeft="10dp"
                     android:gravity="center"
                     android:textColor="@android:color/black"
@@ -246,6 +255,7 @@
                     android:layout_height="match_parent"
                     android:text="المقاس:"
                     android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
                     android:gravity="center"
                     android:textColor="@android:color/black"
                     android:textSize="18sp"/>
@@ -264,31 +274,42 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50pt"
-                android:orientation="horizontal"
+                android:layout_height="60pt"
+                android:orientation="vertical"
                 android:gravity="center"
                 android:layout_margin="10dp"
                 android:layout_marginEnd="30dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_marginEnd="30dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="الكمية :"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:gravity="center"
-                    android:textColor="@android:color/black"
-                    android:layout_marginLeft="10dp"/>
+                    android:textColor="#989898" />
                 <Spinner
                     android:layout_width="40pt"
+                    android:color="#989898"
                     android:layout_height="match_parent"
                     android:id="@+id/needCount"/>
+                </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/add_to_shooping"
-                    android:layout_width="78dp"
-                    android:layout_height="22pt"
+                    android:layout_width="88dp"
+                    android:layout_height="20pt"
                     android:background="@drawable/button_background"
                     android:gravity="center"
-                    android:layout_margin="30dp"
+                    android:layout_marginBottom="5pt"
+                    android:layout_margin="10dp"
                     android:src="@drawable/sh_cart" />
 
             </LinearLayout>

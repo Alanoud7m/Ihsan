@@ -34,22 +34,22 @@
             android:layout_marginTop="5dp">
             <Button
                 android:id="@+id/updateBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="12pt"
+                android:layout_height="22pt"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
                 android:background="@drawable/button_background"
                 android:text="تحديث"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
             <Button
                 android:id="@+id/deleteBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="12pt"
+                android:layout_height="22pt"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
                 android:background="@drawable/button_background"
                 android:text="حذف"
-                android:textSize="20dp"/>
+                android:textSize="18dp"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
