@@ -1,11 +1,18 @@
 package com.example.ihsan;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +50,10 @@ public class b_view_items extends AppCompatActivity {
     RecyclerView recyclerView;
     bItemAdapter bItemAdapter;
     FirebaseFirestore fireStore;
+    final Context context=this;
     FirebaseStorage storage;
     FirebaseAuth fAuth;
+    Button felter;
     MenuItem miLogout;
     private TextView noth;
     int numOf=0;
@@ -52,7 +61,9 @@ public class b_view_items extends AppCompatActivity {
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
     SearchView searchView;
-    String s="", e="" ;
+    String g="", s="" , t="" , c="" ;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +81,20 @@ public class b_view_items extends AppCompatActivity {
             @Override
             public void onClick(View view) {
         startActivity(new Intent(getBaseContext(),b_shopping_cart_Activity.class));
+            }
+        });
+
+
+
+
+
+        felter=(Button) findViewById(R.id.felter);
+        felter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(getBaseContext(),filter_item.class));
+
             }
         });
 
@@ -242,6 +267,7 @@ public class b_view_items extends AppCompatActivity {
                 filteredList.addAll(charityItems) ;
 
 
+
                 final Intent intent = getIntent();
                     String  e = intent.getAction();
                 if(intent.getExtras()!=null && e.equals("a")){
@@ -392,6 +418,49 @@ public class b_view_items extends AppCompatActivity {
                         }
                     }
                 }
+
+
+
+
+
+                final Intent intnent = getIntent();
+                String  w = intnent.getAction();
+                if(intnent.getExtras()!=null && w.equals("pass")){
+                    s = intnent.getExtras().getString("Size");
+                    c = intnent.getExtras().getString("Color");
+                    g = intnent.getExtras().getString("Gender");
+                    t = intnent.getExtras().getString("Type");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(t)|| t.equals("الكل")
+                               &&ch.color.contains(c)|| c.equals("الكل")
+                                &&ch.size.contains(s)|| s.equals("الكل")
+                                &&ch.gender.contains(g)|| g.equals("الكل")
+                        )
+                        {
+                            filteredList.add(ch );
+                            /*if(ch.color.contains(c)|| c.equals("الكل"))
+                            {
+                                filteredList.add(ch );
+                                if(ch.size.contains(s)|| s.equals("الكل"))
+                                {
+                                    filteredList.add(ch );
+                                    if(ch.gender.contains(g)|| g.equals("الكل"))
+                                    {
+                                        filteredList.add(ch );
+                                    }
+                                }
+                            }*/
+                        }
+
+                    }
+                }
+
+
+
+
 
 
                 if(filteredList.size()==0){
