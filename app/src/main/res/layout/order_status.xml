@@ -38,6 +38,7 @@
                 android:layoutDirection="rtl"
                 android:text="طلب جديد"
                 android:padding="15dp"
+                android:buttonTint="#ECAF74"
                 android:textSize="17dp"/>
 
             <RadioButton
@@ -48,6 +49,7 @@
                 android:layoutDirection="rtl"
                 android:padding="15dp"
                 android:checked="false"
+                android:buttonTint="#ECAF74"
                 android:textSize="17dp"
                 android:text="تم استلامه من الجمعية" />
 
@@ -57,6 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="تم التوصيل"
+                android:buttonTint="#ECAF74"
                 android:padding="15dp"
                 android:textSize="17dp"
                 android:layoutDirection="rtl"/>
