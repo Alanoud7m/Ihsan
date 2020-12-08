@@ -16,6 +16,7 @@
         <activity android:name=".order_details" />
         <activity android:name=".b_myorders" />
         <activity android:name=".order_conform" />
+
         <activity android:name=".b_item_details" />
         <activity android:name=".b_shopping_cart_Activity" />
         <activity android:name=".b_view_items" />

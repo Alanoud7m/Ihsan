@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.protobuf.StringValue;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -22,8 +21,8 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
     private ArrayList<order> orders = new ArrayList<>();
     benefOrderAdapter.OnDetailsClickListener detailsButtonListener;
     benefOrderAdapter.OnExitClickListener exitButtonListener;
+    benefOrderAdapter.OnEvalClickListener evalButtonListener;
 
-    benefOrderAdapter.OnTrackClickListener trackClickListener;
 
     public interface OnDetailsClickListener {
         void OnDetailsClick(View view, int position);
@@ -41,13 +40,11 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
     }
 
 
-
-
-    public interface OnTrackClickListener {
-        void onTrackClick(View view, int position);
+    public interface OnEvalClickListener {
+        void onEvalClick(View view, int position);
     }
-    public void setTrackClickListener(benefOrderAdapter.OnTrackClickListener trackClickListener) {
-        this.trackClickListener= trackClickListener;
+    public void setEvalClickListener(benefOrderAdapter.OnEvalClickListener evalButtonListener) {
+        this.evalButtonListener= evalButtonListener;
     }
 
 
@@ -62,23 +59,15 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
 
     public benefOrderAdapter.orderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.benef_order_layout,parent,false);
-
-        orderHolder orddd =new orderHolder(view);
+        benefOrderAdapter.orderHolder orddd =new benefOrderAdapter.orderHolder(view);
         return orddd;
     }
 
     @Override
     public void onBindViewHolder(@NonNull orderHolder holder, final int position) {
-
-        String s = String.valueOf(orders.get(position).order_id);
-        holder.ON.setText(s);
+        holder.ON.setText(orders.get(position).order_id);
         holder.OS.setText(orders.get(position).order_status);
         holder.NOB.setText(orders.get(position).numOfBases);
-
-        if( orders.get(position).getOrder_status().equals("طلب جديد")){
-            orderHolder.evis();
-        }
-
 
         holder.DO.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,11 +83,10 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
             }
         });
 
-
-        holder.track.setOnClickListener(new View.OnClickListener() {
+        holder.DD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                trackClickListener.onTrackClick(view,position );
+                evalButtonListener.onEvalClick(view,position );
             }
         });
 
@@ -111,19 +99,16 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
         return orders.size();
     }
 
-
-    public static class orderHolder extends RecyclerView.ViewHolder
+    public  class orderHolder extends RecyclerView.ViewHolder
     {
-        public Button DO , track;
-        public static Button EO;
+        public Button DO,EO,DD ;
         public TextView ON,OS,NOB;
 
         public orderHolder(@NonNull View itemView) {
             super(itemView);
             DO = (Button) itemView.findViewById(R.id.DO);
             EO = (Button) itemView.findViewById(R.id.EO);
-
-            track = (Button) itemView.findViewById(R.id.track);
+            DD = (Button) itemView.findViewById(R.id.DD);
 
             ON = (TextView) itemView.findViewById(R.id.ON);
             OS = (TextView) itemView.findViewById(R.id.OS);
@@ -131,11 +116,6 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
 
 
         }
-
-       static void evis(){
-            EO.setVisibility(View.VISIBLE);
-    }
-
     }
 
 }
