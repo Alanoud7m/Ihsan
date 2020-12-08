@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/drawer_layout"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    tools:context=".b_homepage">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/bb_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="#B2615757"
+                    app:title=" "
+                    >
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center"
+                            android:layout_margin="2pt"
+                            android:src="@drawable/gp_logo">
+                        </ImageView>
+                        <ImageButton
+                            android:id="@+id/shoppingcart"
+                            android:layout_width="14pt"
+                            android:layout_height="13pt"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="4pt"
+                            android:background="@drawable/sh_cart">
+                        </ImageButton>
+                </androidx.appcompat.widget.Toolbar>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24pt"
+            android:orientation="vertical"
+            >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/bb_tolbar"
+            android:layout_width="match_parent"
+            android:layout_height="26pt"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#e4af80"
+            app:title=" "
+            >
+                <Button
+                    android:id="@+id/child"
+                    android:layout_width="50pt"
+                    android:layout_height="18pt"
+                    android:textColor="@android:color/white"
+                    android:text=" اطفال"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#e4af80"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/men"
+                    android:layout_width="50pt"
+                    android:layout_height="18pt"
+                    android:textColor="@android:color/white"
+                    android:layout_marginHorizontal="7pt"
+                    android:text=" رجال"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#e4af80"
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/womn"
+                    android:layout_width="50pt"
+                    android:layout_height="18pt"
+                    android:textColor="@android:color/white"
+                    android:layout_marginHorizontal="6pt"
+                    android:text=" نساء"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#e4af80"
+                    android:textSize="18sp" />
+
+
+
+
+        </androidx.appcompat.widget.Toolbar>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55pt"
+            android:layout_marginBottom="40pt"
+            android:orientation="vertical"
+            android:padding="2pt"
+            >
+
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2pt"
+    android:orientation="vertical"
+    android:padding="2pt"
+    android:text=" القطع الواصلة حديثاً"
+    android:textStyle="bold"
+    android:gravity="right"
+    android:textSize="20sp"
+    >
+
+</TextView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="4pt"
+            android:layout_marginBottom="8pt"
+            android:layout_width="match_parent"
+            android:layout_height="145pt"
+            android:id="@+id/recycler_th"
+        android:orientation="horizontal"
+            />
+                <Button
+                    android:id="@+id/viewItem"
+                    android:layout_width="70pt"
+                    android:layout_height="16pt"
+                    android:layout_marginTop="15pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="عرض جميع القطع "
+                    android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="310pt"
+            android:orientation="vertical"
+            >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+                <Button
+                    android:id="@+id/chose"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="احذية"
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/thyab"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="ثياب رجالية"
+                    android:textSize="16sp" />
+                <Button
+                    android:id="@+id/fasateen"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="فساتين"
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/balayz"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="بلايز "
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/banateel"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="بناطيل "
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/hakaeb"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="حقائب "
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/maatef"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="معاطف "
+                    android:textSize="18sp" />
+                <Button
+                    android:id="@+id/tananeer"
+                    android:layout_width="40pt"
+                    android:layout_height="25pt"
+                    android:layout_margin="5pt"
+                    android:layout_gravity="right"
+                    android:background="@drawable/button_background"
+                    android:text="تنانير "
+                    android:textSize="18sp" />
+
+        </LinearLayout>
+
+        </HorizontalScrollView>
+
+        </RelativeLayout>
+
+
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view"
+            app:menu="@menu/naviagation_b"
+            android:layout_gravity="start"
+            android:textSize="33pt"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
