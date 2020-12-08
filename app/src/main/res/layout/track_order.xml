@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="300dp" >
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e4af80"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="تتبع الطلب"
+        android:textColor="@android:color/white"
+        android:textSize="23sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:paddingBottom="0dp">
+
+            <TextView
+                android:id="@+id/orderN"
+                android:layout_width="144dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="right"
+                android:text="....."
+                android:textAlignment="gravity"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/orderNtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:text="حالة الطلب رقم : "
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:paddingBottom="0dp">
+
+            <ImageButton
+                android:id="@+id/imageButtonDone"
+                android:layout_width="1dp"
+                android:soundEffectsEnabled="false"
+                android:nestedScrollingEnabled="false"
+                android:defaultFocusHighlightEnabled="false"
+                android:clickable="false"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@color/cardview_light_background"
+                android:contextClickable="false"
+                app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+            <ImageButton
+                android:id="@+id/imageButtonPicked"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:soundEffectsEnabled="false"
+                android:nestedScrollingEnabled="false"
+                android:defaultFocusHighlightEnabled="false"
+                android:clickable="false"
+                android:background="@color/cardview_light_background"
+                android:contextClickable="false"
+                app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+            <ImageButton
+                android:id="@+id/imageButtonNew"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:soundEffectsEnabled="false"
+                android:nestedScrollingEnabled="false"
+                android:defaultFocusHighlightEnabled="false"
+                android:clickable="false"
+                android:background="@color/cardview_light_background"
+                android:contextClickable="false"
+                app:srcCompat="@drawable/ic_baseline_check_circle_24" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Donetext"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@color/cardview_light_background"
+                android:text="تم التوصيل"
+                android:textAlignment="center"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/Pickedtext"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/cardview_light_background"
+                android:text="تم استلامه من الجمعية"
+                android:textAlignment="center"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/NewOtext"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/cardview_light_background"
+                android:text="طلب جديد"
+                android:textAlignment="center"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
