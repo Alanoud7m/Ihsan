@@ -9,35 +9,51 @@
     android:orientation="vertical"
     android:layoutDirection="rtl">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#a5a5a5">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/bb_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#B2615757"
+            app:title=" "
+            >
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_margin="2pt"
+                android:src="@drawable/gp_logo">
+            </ImageView>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="إحسان"
-            android:textSize="35sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="القطع المضافة "
+            android:textSize="23sp"
             android:gravity="center"
-            android:paddingRight="10dp"
-            android:textColor="@android:color/black"/>
-
-
+            android:textColor="@android:color/white"
+            android:background="#e4af80"
+            android:padding="10dp"/>
     </LinearLayout>
 
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="القطع المضافة"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:background="#e4af80"
-        android:padding="10dp"/>
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="match_parent"

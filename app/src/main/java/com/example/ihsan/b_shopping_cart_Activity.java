@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -31,6 +33,8 @@ import javax.annotation.Nullable;
 public class b_shopping_cart_Activity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Button nxt;
+    private TextView noth;
+
     FirebaseFirestore fireStore;
     FirebaseAuth fAuth;
     ArrayList<cart> items, filteredList;
@@ -47,7 +51,7 @@ public class b_shopping_cart_Activity extends AppCompatActivity {
         items = new ArrayList<cart>();
         filteredList = new ArrayList<cart>();
         getItems();
-
+        noth=(TextView) findViewById(R.id.noth);
         nxt = (Button) findViewById(R.id.nextt);
         nxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +77,11 @@ public class b_shopping_cart_Activity extends AppCompatActivity {
                     cart ch1 = snapshot.toObject(cart.class);
                     ch1.item_id = snapshot.getId();
                     items.add(ch1);
+                }
+
+                if(items.size()==0){
+                    nxt.setVisibility(View.GONE);
+                    noth.setVisibility(View.VISIBLE);
                 }
                 filteredList.addAll(items);
                 recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(), 1));

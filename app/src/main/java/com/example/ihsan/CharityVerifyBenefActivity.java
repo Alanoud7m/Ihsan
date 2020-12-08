@@ -9,11 +9,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CharityVerifyBenefActivity extends AppCompatActivity {
 FirebaseFirestore fStore;
+    FirebaseAuth fAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,14 @@ FirebaseFirestore fStore;
                 fStore.collection("Beneficiaries").document(selectedBenef).update("status","Approved").addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        //////////////////////////////////////////////////////////////////////////////////////////
+                        fAuth = FirebaseAuth.getInstance();
+                        final FirebaseUser currentUser = fAuth.getCurrentUser();
+                        Map<String, Object> newCounter = new HashMap<>();
+                        newCounter.put("numOfItems", 0);
+                        fStore.collection("cartList").document(currentUser.getEmail().toString()).set(newCounter);
+                        fStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").document().delete();
+
                         Toast.makeText(getBaseContext(),"تم قبول المستفيد بنجاح",Toast.LENGTH_LONG).show();
                         finish();
                     }

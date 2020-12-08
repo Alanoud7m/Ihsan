@@ -14,27 +14,35 @@
         android:layout_height="match_parent">
 
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:background="#B2615757"
-            app:title="."
-            app:titleTextColor="#8c8484">
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
+
+
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/bb_toolbar"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="إحسان "
-                android:layout_gravity="center"
-                android:textColor="#070707"
-                android:textSize="30sp"
-                />
-        </androidx.appcompat.widget.Toolbar>
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="0dp"
+                android:background="#B2615757"
+                app:title=" "
+                >
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="2pt"
+                    android:src="@drawable/gp_logo">
+                </ImageView>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
 
 
 

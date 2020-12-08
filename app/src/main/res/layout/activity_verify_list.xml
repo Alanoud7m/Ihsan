@@ -8,24 +8,42 @@
     tools:context=".VerifyListActivity"
     android:orientation="vertical"
     android:layoutDirection="rtl">
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#a5a5a5">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="إحسان"
-            android:textSize="35sp"
-            android:gravity="center"
-            android:paddingRight="10dp"
-            android:textColor="@android:color/black"/>
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
 
-    </LinearLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/bb_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#B2615757"
+            app:title=" "
+            >
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_margin="2pt"
+                android:src="@drawable/gp_logo">
+            </ImageView>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
 
     <TextView
 
@@ -37,6 +55,7 @@
         android:textColor="@android:color/white"
         android:background="#e4af80"
         android:padding="10dp"/>
+    </LinearLayout>
 
 <androidx.recyclerview.widget.RecyclerView
     android:layout_width="match_parent"

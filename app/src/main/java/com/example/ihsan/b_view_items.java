@@ -1,5 +1,14 @@
 package com.example.ihsan;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -9,24 +18,13 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,6 +34,7 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Nullable;
 
@@ -44,30 +43,38 @@ public class b_view_items extends AppCompatActivity {
     RecyclerView recyclerView;
     bItemAdapter bItemAdapter;
     FirebaseFirestore fireStore;
+    FirebaseStorage storage;
+    FirebaseAuth fAuth;
     MenuItem miLogout;
+    private TextView noth;
+    int numOf=0;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
-
+    SearchView searchView;
+    String s="", e="" ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b_view_items);
 
+        noth=(TextView) findViewById(R.id.noth);
         recyclerView = findViewById(R.id.recycler_tow);
         charityItems = new ArrayList<CharityItem>();
         filteredList = new ArrayList<CharityItem>();
+
 
         //shopping cart icon
         ImageButton shoppingcart = findViewById(R.id.shoppingcart);
         shoppingcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(),b_shopping_cart_Activity.class));
+        startActivity(new Intent(getBaseContext(),b_shopping_cart_Activity.class));
             }
         });
 
         getItems();
+
         miLogout = findViewById(R.id.logout);
         Toolbar toolbar = findViewById(R.id.bb_toolbar);
         setSupportActionBar(toolbar);
@@ -92,6 +99,59 @@ public class b_view_items extends AppCompatActivity {
             }
         });
 
+
+            searchView =(SearchView)findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                if(!s.isEmpty())
+                {filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.description.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                            if(ch.color.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                            if(ch.size.contains(s))
+                            {
+                                filteredList.add(ch);
+                            }
+                        if(ch.gender.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                        if(ch.charity.contains(s))
+                    {
+                        filteredList.add(ch);
+                    }
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                    bItemAdapter.notifyDataSetChanged();
+                }else
+                {
+                    filteredList.clear();
+                    getItems();
+                }
+
+
+                return false;
+            }
+        });
+
+
     }
 
 
@@ -106,6 +166,8 @@ public class b_view_items extends AppCompatActivity {
     public void UserMenuSelected(MenuItem menuItem){
         switch (menuItem.getItemId()) {
             case  R.id.address:
+                startActivity(new Intent(b_view_items.this, b_homepage.class));
+
                 break;
 
             case  R.id.account:
@@ -114,6 +176,7 @@ public class b_view_items extends AppCompatActivity {
                 break;
 
             case  R.id.order:
+                startActivity(new Intent(b_view_items.this, b_myorders.class));
                 break;
 
             case  R.id.call:
@@ -168,7 +231,7 @@ public class b_view_items extends AppCompatActivity {
         fireStore = FirebaseFirestore.getInstance();
         fireStore.collection("CharityItems").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException f) {
                 charityItems.clear();
                 filteredList.clear();
                 for(DocumentSnapshot snapshot :queryDocumentSnapshots)
@@ -178,6 +241,162 @@ public class b_view_items extends AppCompatActivity {
                 }
                 filteredList.addAll(charityItems) ;
 
+
+                final Intent intent = getIntent();
+                    String  e = intent.getAction();
+                if(intent.getExtras()!=null && e.equals("a")){
+                    s = intent.getExtras().getString("احذية");
+                        filteredList.clear();
+
+                        for(CharityItem ch :charityItems)
+                        {
+                            if(ch.type.contains(s))
+                            {
+                                filteredList.add(ch);
+                            }
+                        }
+                }
+
+                else if(intent.getExtras()!=null && e.equals("b")){
+                    s = intent.getExtras().getString("ثياب رجالية");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+
+                else if(intent.getExtras()!=null && e.equals("c")){
+                    s = intent.getExtras().getString("فساتين");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+
+                else  if(intent.getExtras()!=null && e.equals("d")){
+                    s = intent.getExtras().getString("بلايز");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+
+                else  if(intent.getExtras()!=null && e.equals("e")){
+                    s = intent.getExtras().getString("بناطيل");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+
+                else  if(intent.getExtras()!=null && e.equals("f")){
+                    s = intent.getExtras().getString("حقائب");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+
+                else  if(intent.getExtras()!=null && e.equals("g")){
+                    s = intent.getExtras().getString("معاطف");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+                else if(intent.getExtras()!=null && e.equals("h")){
+                    s = intent.getExtras().getString("تنانير");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.type.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+                else  if(intent.getExtras()!=null && e.equals("i")){
+                    s = intent.getExtras().getString("نسائي");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.gender.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+
+                else  if(intent.getExtras()!=null && e.equals("j")){
+                    s = intent.getExtras().getString("رجالي");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.gender.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+                else if(intent.getExtras()!=null && e.equals("k")){
+                    s = intent.getExtras().getString("اطفال");
+                    filteredList.clear();
+
+                    for(CharityItem ch :charityItems)
+                    {
+                        if(ch.gender.contains(s))
+                        {
+                            filteredList.add(ch);
+                        }
+                    }
+                }
+
+
+                if(filteredList.size()==0){
+                    noth.setVisibility(View.VISIBLE);
+                }
                 bItemAdapter = new bItemAdapter(getBaseContext(),filteredList);
                 bItemAdapter.setDetailseButtonListener(new bItemAdapter.OnDetailseButtonItemClickListener() {
                     @Override
@@ -189,6 +408,75 @@ public class b_view_items extends AppCompatActivity {
                         startActivity(intentd);
                     }
                 });
+
+
+                bItemAdapter.setAddButtonListener(new bItemAdapter.OnAddButtonItemClickListener() {
+                    @Override
+                    public void onAddIsClick(View button, final int position) {
+
+                        fAuth = FirebaseAuth.getInstance();
+                        final FirebaseUser currentUser = fAuth.getCurrentUser();
+
+                        fireStore.collection("cartList").document(currentUser.getEmail().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                            @Override
+                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                          numOf = Integer.valueOf(documentSnapshot.get("numOfItems").toString());
+                                ++numOf;
+                                storage = FirebaseStorage.getInstance();
+                                // sRef = storage.getReference().child("cartList/" + randomKey);
+                                                                     for (int i=0 ; i<charityItems.size();i++){
+                                            if(charityItems.get(i).id.equals(charityItems.get(position).id)){
+                                                CharityItem ch=charityItems.get(i);
+                                                cart ca = new cart();
+                                                ca.item_id = ch.id.toString();
+                                                ca.setItem_img(ch.getImage());
+                                                ca.itemDesc = ch.description.toString();
+                                                ca.itemChName = ch.charity.toString();
+                                                ca.needCount = "١";
+                                                ca.setItemSize(ch.getSize());
+
+                                                fireStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").add(ca).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                                    @Override
+                                                    public void onSuccess(DocumentReference documentReference) {
+                                                        Map<String, Object> newCounter = new HashMap<>();
+                                                        newCounter.put("numOfItems", numOf);
+                                                        fireStore.collection("cartList").document(currentUser.getEmail().toString()).set(newCounter).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                            @Override
+                                                            public void onSuccess(Void aVoid) {
+                                                                AlertDialog.Builder ab = new AlertDialog.Builder(b_view_items.this);
+
+                                                                ab.setMessage("تم اضافة القطعة إلى سلة التسوق ، هل تريد انهاء الطلب أو متابعة التسوق ؟");
+                                                                ab.setCancelable(false);
+                                                                ab.setPositiveButton("انهاء الطلب", new DialogInterface.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                                        startActivity(new Intent(getBaseContext(), b_shopping_cart_Activity.class));
+                                                                    }
+                                                                });
+
+                                                                ab.setNegativeButton(" متابعة التسوق", new DialogInterface.OnClickListener() {
+                                                                    @Override
+                                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                                        startActivity(new Intent(getBaseContext(), b_view_items.class));
+                                                                    }
+
+                                                                });
+                                                                AlertDialog alert = ab.create();
+                                                                alert.show();
+                                                            }
+                                                        });
+
+                                                    }
+                                                });
+
+                                    }}
+                            }
+                        });
+
+                    }
+
+
+            });
 
                     recyclerView.setLayoutManager(new GridLayoutManager(getBaseContext(),2));
                 recyclerView.setAdapter(bItemAdapter);

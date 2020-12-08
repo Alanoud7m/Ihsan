@@ -8,49 +8,50 @@
     tools:context=".b_ViewAccount">
 
 
-    <include
-        android:id="@+id/ihsan_toolbar"
-        layout="@layout/ihsan_toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="56dp" />
 
-    <android.widget.Toolbar
-        android:id="@+id/orange_toolbar"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E5AE82"
-        app:layout_constraintTop_toBottomOf="@+id/ihsan_toolbar"
-        tools:layout_editor_absoluteX="62dp">
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/bb_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="0dp"
+            android:background="#B2615757"
+            app:title=" "
+            >
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_margin="2pt"
+                android:src="@drawable/gp_logo">
+            </ImageView>
+
+
+        </androidx.appcompat.widget.Toolbar>
 
 
         <TextView
-            android:id="@+id/toolbar_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#E99B68"
-            android:textColor="#FFFFFF"
-            android:textSize="24dp" />
-
-    </android.widget.Toolbar>
-
-
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="139dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="64dp"
-        android:background="#E5AE82"
-        android:text=" حسابي"
-        android:textColor="#FFFFFF"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.435"
-        app:layout_constraintStart_toStartOf="@+id/orange_toolbar"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:text="حسابي"
+            android:textSize="23sp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:background="#e4af80"
+            android:padding="10dp"/>
+    </LinearLayout>
 
 
     <TextView

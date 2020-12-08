@@ -4,15 +4,7 @@ public class order {
     String benef_addres ,benef_name ,benef_phone ,
             charity_name ,order_date,order_status,numOfBases,
             item_desc ,item_id ,item_size,item_image,
-             volenteer_name,orderID;
-
-    public String getOrderID() {
-        return orderID;
-    }
-
-    public void setOrderID(String orderID) {
-        this.orderID = orderID;
-    };
+             volenteer_name;
 
 int order_id;
     public order() {
