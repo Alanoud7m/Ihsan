@@ -101,7 +101,7 @@
 
     <Button
 
-    android:id="@+id/track"
+    android:id="@+id/DD"
         android:layout_width="42pt"
         android:layout_height="15pt"
     android:layout_gravity="left"

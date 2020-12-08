@@ -48,6 +48,7 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
     }
 
 
+
     public benefOrderAdapter(Context mContext, ArrayList<order> orders) {
         this.mContext = mContext;
         this.orders = orders;
@@ -89,6 +90,7 @@ public class benefOrderAdapter extends RecyclerView.Adapter<benefOrderAdapter.or
                 evalButtonListener.onEvalClick(view,position );
             }
         });
+
 
     }
 

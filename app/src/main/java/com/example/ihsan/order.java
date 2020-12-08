@@ -29,6 +29,14 @@ int order_id;
 
     }
 
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
     public String getBenef_addres() {
         return benef_addres;
     }

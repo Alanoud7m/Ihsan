@@ -194,10 +194,10 @@ public class b_myorders extends AppCompatActivity {
 
 
         //track
-        benefOrderAdapter.setTrackClickListener(new benefOrderAdapter.OnTrackClickListener() {
+        benefOrderAdapter.setEvalClickListener(new benefOrderAdapter.OnEvalClickListener() {
 
             @Override
-            public void onTrackClick(View view, int position) {
+            public void onEvalClick(View view, int position) {
                    // custom dialog
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.track_order);
