@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e4af80"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="تغيير حالة الطلب"
+        android:textColor="@android:color/white"
+        android:textSize="23sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:paddingTop="50dp">
+
+        <RadioGroup
+            android:id="@+id/radios"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:inputType="text"
+            android:padding="15dp">
+
+            <RadioButton
+                android:id="@+id/NewOrderrB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layoutDirection="rtl"
+                android:text="طلب جديد"
+                android:padding="15dp"
+                android:buttonTint="#ECAF74"
+                android:textSize="17dp"/>
+
+            <RadioButton
+                android:id="@+id/PickedrB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layoutDirection="rtl"
+                android:padding="15dp"
+                android:checked="false"
+                android:buttonTint="#ECAF74"
+                android:textSize="17dp"
+                android:text="تم استلامه من الجمعية" />
+
+            <RadioButton
+                android:id="@+id/DeliverB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="تم التوصيل"
+                android:buttonTint="#ECAF74"
+                android:padding="15dp"
+                android:textSize="17dp"
+                android:layoutDirection="rtl"/>
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="200dp"
+            android:layout_height="34dp"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="@android:color/white">
+
+            <Button
+                android:id="@+id/no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="تراجع"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/white"
+                android:textColor="#ECAF74"
+                android:textSize="23sp"/>
+
+            <Button
+                android:id="@+id/ok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="موافق"
+                android:layout_marginRight="10dp"
+                android:background="@android:color/white"
+                android:textColor="#ECAF74"
+                android:textSize="23sp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

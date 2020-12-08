@@ -53,6 +53,7 @@ public class cart_items_adapter extends RecyclerView.Adapter<cart_items_adapter.
         holder.charityName.setText(items.get(position).itemChName);
         Picasso.get().load(items.get(position).getItem_img()).into(holder.charityItemImg);
         holder.numOfBas.setText(items.get(position).needCount);
+        holder.ssize.setText(items.get(position).getItemSize());
         holder.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +72,7 @@ public class cart_items_adapter extends RecyclerView.Adapter<cart_items_adapter.
     public  class cartItemsHolder extends RecyclerView.ViewHolder
     {
         public ImageView charityItemImg;
-        public TextView charityItemTxt , charityName;
+        public TextView charityItemTxt , charityName,ssize;
         public TextView numOfBas;
         public ImageButton deleteBtn;
 
@@ -80,6 +81,7 @@ public class cart_items_adapter extends RecyclerView.Adapter<cart_items_adapter.
             charityItemImg = (ImageView)itemView.findViewById(R.id.charityItemImg);
             charityItemTxt = (TextView) itemView.findViewById(R.id.charityItemTxt);
             charityName = (TextView) itemView.findViewById(R.id.charityName);
+            ssize = (TextView) itemView.findViewById(R.id.ssize);
             deleteBtn= (ImageButton)itemView.findViewById(R.id.deleteBtn);
             numOfBas = (TextView)itemView.findViewById(R.id.numOfBas);
 

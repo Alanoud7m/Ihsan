@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
@@ -27,12 +28,18 @@ public class NavaigationDelivery extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navaigation_delivery);
 
+        Button showUploadFile= findViewById(R.id.showUploadFile);
+        showUploadFile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getBaseContext(),ready_orders.class));
+            }
+        });
+
         miLogout=findViewById(R.id.logout);
         Toolbar toolbar=findViewById(R.id.toolBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
 
 //Navigation coding start
@@ -73,6 +80,7 @@ public class NavaigationDelivery extends AppCompatActivity  {
                 break;
 
             case  R.id.order:
+                startActivity(new Intent(NavaigationDelivery.this, v_order_list.class));
                 break;
 
             case  R.id.call:
@@ -122,3 +130,4 @@ public class NavaigationDelivery extends AppCompatActivity  {
 
     }
 }
+

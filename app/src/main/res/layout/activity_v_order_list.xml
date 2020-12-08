@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharityItemsActivity"
-    android:orientation="vertical"
-    android:layoutDirection="rtl">
-
-
+    tools:context=".v_order_list">
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
+        >
 
 
         <androidx.appcompat.widget.Toolbar
@@ -28,40 +27,49 @@
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:background="#B2615757"
-            app:title=" "
-            >
+            app:title=" ">
 
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_gravity="center"
                 android:layout_margin="2pt"
-                android:src="@drawable/gp_logo">
-            </ImageView>
-
+                android:src="@drawable/gp_logo"></ImageView>
 
         </androidx.appcompat.widget.Toolbar>
-
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="القطع المضافة "
+            android:text="طلبات التوصيل الخاصة بي"
             android:textSize="23sp"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:background="#e4af80"
             android:padding="10dp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ordersRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.core.widget.NestedScrollView>
+
     </LinearLayout>
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        app:queryHint="ابحث هنا"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycler"/>
-</LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        app:menu="@menu/naviagation_d"
+        android:layout_gravity="start"
+        android:textSize="33pt"
+        app:itemShapeInsetStart="@dimen/material_emphasis_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
+
+
+

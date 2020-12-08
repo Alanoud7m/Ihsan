@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:id="@+id/drawer_layout"
     android:fitsSystemWindows="true"
-    android:layout_height="wrap_content"
-    android:id="@+id/rel_cart"
-    android:orientation="vertical"
-    tools:context=".b_shopping_cart_Activity">
-
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ready_orders">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:id="@+id/bot"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
-
+        >
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/bb_toolbar"
@@ -39,61 +36,39 @@
                 android:layout_margin="2pt"
                 android:src="@drawable/gp_logo">
             </ImageView>
-
-
         </androidx.appcompat.widget.Toolbar>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="سلة التسوق"
+            android:text="الطلبات الجاهزة للتوصيل"
             android:textSize="23sp"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:background="#e4af80"
             android:padding="10dp"/>
 
-
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_marginBottom="3pt"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
+
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ordersRecycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/recycler_shcart"/>
+                android:layout_height="match_parent" />
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        app:menu="@menu/naviagation_d"
+        android:layout_gravity="start"
+        android:textSize="33pt"
+        app:itemShapeInsetStart="@dimen/cardview_default_elevation"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+</androidx.drawerlayout.widget.DrawerLayout>
 
-        <TextView
-            android:id="@+id/noth"
-            android:visibility="gone"
 
-            android:layout_marginTop="20pt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="لا يوجد اي قطع في عربة التسوق !"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:padding="10dp"/>
-
-        <Button
-            android:id="@+id/nextt"
-            android:layout_width="60pt"
-            android:layout_height="22pt"
-            android:layout_gravity="center"
-            android:layout_marginTop="20pt"
-            android:background="@drawable/button_background"
-            android:text="التالي"
-            android:layout_marginBottom="10pt"
-            android:textSize="20dp" />
-    </LinearLayout>
-
-</LinearLayout>

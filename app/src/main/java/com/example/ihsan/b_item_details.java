@@ -105,7 +105,7 @@ public class b_item_details extends AppCompatActivity {
                     ch = documentSnapshot.toObject(CharityItem.class);
 
                     assert ch != null;
-                    itemId = ch.getId();
+                    itemId = itemId;
                     titemCount.setText(ch.getCount());
                     titemGender.setText(ch.getGender());
                     titemColor.setText(ch.getColor());
@@ -184,61 +184,65 @@ public class b_item_details extends AppCompatActivity {
         add_to_shooping.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fStore.collection("cartList").document(currentUser.getEmail().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        numOf = Integer.valueOf(documentSnapshot.get("numOfItems").toString());
-                        ++numOf;
-                storage = FirebaseStorage.getInstance();
-                // sRef = storage.getReference().child("cartList/" + randomKey);
-                cart ca = new cart();
-                ca.item_id = itemId;
-                 //       ca.setItem_img(Imgl.toString());
-                        ca.setItem_img(ch.getImage());
-                        ca.itemDesc = itemDesc.getText().toString();
-                ca.itemChName = itemChName.getText().toString();
-                ca.needCount = needCount.getSelectedItem().toString();
-                ca.setItemSize(ch.getSize());
-                fStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").add(ca).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Map<String, Object> newCounter = new HashMap<>();
-                        newCounter.put("numOfItems", numOf);
-                        fStore.collection("cartList").document(currentUser.getEmail().toString()).set(newCounter).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                AlertDialog.Builder ab= new AlertDialog.Builder(b_item_details.this);
-
-                                ab.setMessage("تم اضافة القطعة إلى سلة التسوق ، هل تريد انهاء الطلب أو متابعة التسوق ؟");
-                                ab.setCancelable(false);
-                                ab.setPositiveButton("انهاء الطلب", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        startActivity(new Intent(getBaseContext(), b_shopping_cart_Activity.class));
-                                    }
-                                });
-
-                                ab.setNegativeButton(" متابعة التسوق", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        startActivity(new Intent(getBaseContext(), b_view_items.class));
-                                    }
-
-                                });
-                                AlertDialog alert = ab.create();
-                                alert.show();
-                            }
-                        });
-
-                    }
-                });
 
 
-                    }
-                });
+/*                final Intent intent = getIntent();
+                String e = intent.getAction();
+                if(intent.getExtras()!=null && e.equals("k")) {*/
+                    fStore.collection("cartList").document(currentUser.getEmail().toString()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            numOf = Integer.valueOf(documentSnapshot.get("numOfItems").toString());
+                            ++numOf;
+                            storage = FirebaseStorage.getInstance();
+                            // sRef = storage.getReference().child("cartList/" + randomKey);
+                            cart ca = new cart();
+                            ca.item_id = ch.id.toString();
+                            ca.setItem_img(ch.getImage());
+                            ca.itemDesc = ch.description.toString();
+                            ca.itemChName = ch.charity.toString();
+                            ca.needCount = (String) needCount.getSelectedItem();
+                            ca.setItemSize(ch.getSize());
+                            fStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").add(ca).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    Map<String, Object> newCounter = new HashMap<>();
+                                    newCounter.put("numOfItems", numOf);
+                                    fStore.collection("cartList").document(currentUser.getEmail().toString()).set(newCounter).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            AlertDialog.Builder ab = new AlertDialog.Builder(b_item_details.this);
+
+                                            ab.setMessage("تم اضافة القطعة إلى سلة التسوق ، هل تريد انهاء الطلب أو متابعة التسوق ؟");
+                                            ab.setCancelable(false);
+                                            ab.setPositiveButton("انهاء الطلب", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    startActivity(new Intent(getBaseContext(), b_shopping_cart_Activity.class));
+                                                }
+                                            });
+
+                                            ab.setNegativeButton(" متابعة التسوق", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialogInterface, int i) {
+                                                    startActivity(new Intent(getBaseContext(), b_view_items.class));
+                                                }
+
+                                            });
+                                            AlertDialog alert = ab.create();
+                                            alert.show();
+                                        }
+                                    });
+
+                                }
+                            });
 
 
-                    }
+                        }
+                    });
+
+                }
+                 //   }
                 });
 
             }

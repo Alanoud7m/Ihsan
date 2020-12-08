@@ -20,7 +20,17 @@ package com.example.ihsan;
 public class items_order_adapter extends RecyclerView.Adapter<items_order_adapter.cartItemsHolder>{
     private Context mContext;
     private ArrayList<cart> items = new ArrayList<>();
+    private ArrayList<CharityItem> charityItems = new ArrayList<>();
+    CharityItemAdapter.OnDeleteButtonItemClickListener deleteButtonListener;
 
+
+    public interface OnDeleteButtonItemClickListener {
+        void onDeleteIsClick(View button, int position);
+    }
+
+    public void setDeleteButtonListener(CharityItemAdapter.OnDeleteButtonItemClickListener deleteButtonListener) {
+        this.deleteButtonListener= deleteButtonListener;
+    }
 
     public items_order_adapter(Context mContext, ArrayList<cart> items) {
         this.mContext = mContext;

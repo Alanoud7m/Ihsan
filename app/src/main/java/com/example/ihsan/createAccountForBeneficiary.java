@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -224,6 +225,13 @@ public class createAccountForBeneficiary extends AppCompatActivity {
 
             }
         });
+
+        fAuth = FirebaseAuth.getInstance();
+        final FirebaseUser currentUser = fAuth.getCurrentUser();
+        Map<String, Object> newCounter = new HashMap<>();
+        newCounter.put("numOfItems", 0);
+        fStore.collection("cartList").document(currentUser.getEmail().toString()).set(newCounter);
+        fStore.collection("cartList").document(currentUser.getEmail().toString()).collection("items").document().delete();
 
     }
 
